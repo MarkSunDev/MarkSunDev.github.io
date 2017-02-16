@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>文章标题 | 老虎布吃人</title>
+  <title>文章标题 | 程序员的武侠世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="你好，欢迎来到我的技术博客，我是最棒的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文章标题">
 <meta property="og:url" content="http://yoursite.com/2017/02/15/文章标题/Dev">
-<meta property="og:site_name" content="老虎布吃人">
+<meta property="og:site_name" content="程序员的武侠世界">
 <meta property="og:description" content="你好，欢迎来到我的技术博客，我是最棒的">
 <meta property="og:updated_time" content="2017-02-15T15:07:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文章标题">
 <meta name="twitter:description" content="你好，欢迎来到我的技术博客，我是最棒的">
   
-    <link rel="alternative" href="/atom.xml" title="老虎布吃人" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="程序员的武侠世界" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -266,6 +266,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/02/16/Android-内功心法/Dev" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android 内功心法
+        
+      </div>
+    </a>
   
   
     <a href="/2017/02/15/hello-world/Dev" id="article-nav-older" class="article-nav-link-wrap">
