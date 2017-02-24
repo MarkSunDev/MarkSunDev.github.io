@@ -84,12 +84,22 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="聊一聊单例模式
+饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。
+ 12345678910class SingleInstance &amp;#123;  private static SingleInstance sInstance = new SingleInstance();  private SingleInstance() &amp;#123;    &amp;#125;  public static S">
+<meta property="og:type" content="article">
 <meta property="og:title" content="程序员的武侠世界">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/02/24/聊一聊单例模式/Dev">
 <meta property="og:site_name" content="程序员的武侠世界">
+<meta property="og:description" content="聊一聊单例模式
+饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。
+ 12345678910class SingleInstance &amp;#123;  private static SingleInstance sInstance = new SingleInstance();  private SingleInstance() &amp;#123;    &amp;#125;  public static S">
+<meta property="og:updated_time" content="2017-02-24T02:27:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序员的武侠世界">
+<meta name="twitter:description" content="聊一聊单例模式
+饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。
+ 12345678910class SingleInstance &amp;#123;  private static SingleInstance sInstance = new SingleInstance();  private SingleInstance() &amp;#123;    &amp;#125;  public static S">
 
 
 
@@ -107,7 +117,7 @@
   };
 </script>
 
-  <title> 程序员的武侠世界 </title>
+  <title>  | 程序员的武侠世界 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -128,9 +138,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -207,9 +215,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -230,9 +238,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/24/聊一聊单例模式/Dev" itemprop="url">
-                  未命名
-                </a>
               
             
           </h1>
@@ -272,9 +277,7 @@
       
 
       
-        
-          
-            <h1 id="聊一聊单例模式"><a href="#聊一聊单例模式" class="headerlink" title="聊一聊单例模式"></a>聊一聊单例模式</h1><ol>
+        <h1 id="聊一聊单例模式"><a href="#聊一聊单例模式" class="headerlink" title="聊一聊单例模式"></a>聊一聊单例模式</h1><ol>
 <li><p>饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;  </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
@@ -291,16 +294,19 @@
 </li>
 </ol>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -311,16 +317,15 @@
 
       
       
-        <div class="post-eof"></div>
-      
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -328,6 +333,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -347,8 +356,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://avatar.csdn.net/0/C/E/1_olaohubuchiren1.jpg"
@@ -384,6 +402,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聊一聊单例模式"><span class="nav-number">1.</span> <span class="nav-text">聊一聊单例模式</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -487,6 +516,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
