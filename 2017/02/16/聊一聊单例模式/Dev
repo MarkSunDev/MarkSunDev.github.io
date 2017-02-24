@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android," />
 
 
 
@@ -84,22 +84,16 @@
 
 
 
-<meta name="description" content="聊一聊单例模式
-饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。
-12345678910class SingleInstance &amp;#123;  private static SingleInstance sInstance = new SingleInstance();  private SingleInstance() &amp;#123;    &amp;#125;  public static Si">
+<meta name="description" content="单例模式是Android项目中最常用的设计模式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聊一聊单例模式">
 <meta property="og:url" content="http://yoursite.com/2017/02/16/聊一聊单例模式/Dev">
 <meta property="og:site_name" content="野生安卓">
-<meta property="og:description" content="聊一聊单例模式
-饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。
-12345678910class SingleInstance &amp;#123;  private static SingleInstance sInstance = new SingleInstance();  private SingleInstance() &amp;#123;    &amp;#125;  public static Si">
-<meta property="og:updated_time" content="2017-02-24T03:43:38.000Z">
+<meta property="og:description" content="单例模式是Android项目中最常用的设计模式。">
+<meta property="og:updated_time" content="2017-02-24T06:25:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聊一聊单例模式">
-<meta name="twitter:description" content="聊一聊单例模式
-饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。
-12345678910class SingleInstance &amp;#123;  private static SingleInstance sInstance = new SingleInstance();  private SingleInstance() &amp;#123;    &amp;#125;  public static Si">
+<meta name="twitter:description" content="单例模式是Android项目中最常用的设计模式。">
 
 
 
@@ -190,6 +184,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
@@ -255,6 +269,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android基础/" itemprop="url" rel="index">
+                    <span itemprop="name">android基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -277,9 +310,11 @@
       
 
       
-        <h1 id="聊一聊单例模式"><a href="#聊一聊单例模式" class="headerlink" title="聊一聊单例模式"></a>聊一聊单例模式</h1><ol>
+        <p>单例模式是Android项目中最常用的设计模式。</p>
+<a id="more"></a>
+<ol>
 <li><p>饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;  </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;  </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>懒汉式，第一次使用时创建，解决饿汉式的资源浪费问题，但是有并发问题。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span>() </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == sInstance )&#123;</div><div class="line">      sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -312,7 +347,27 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/android/" rel="tag">#android</a>
+          
+        </div>
+      
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/24/android/Dev" rel="prev" title="android">
+                android <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -376,14 +431,28 @@
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/">
-              <span class="site-state-item-count">1</span>
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -391,6 +460,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/MarkSunDev" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -409,7 +489,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聊一聊单例模式"><span class="nav-number">1.</span> <span class="nav-text">聊一聊单例模式</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
