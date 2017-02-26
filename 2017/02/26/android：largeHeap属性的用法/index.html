@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="android," />
 
 
 
@@ -84,12 +84,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="MARK'S BLOG">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android：largeHeap属性的用法">
+<meta property="og:url" content="http://yoursite.com/2017/02/26/android：largeHeap属性的用法/index.html">
 <meta property="og:site_name" content="MARK'S BLOG">
+<meta property="og:description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
+<meta property="og:updated_time" content="2017-02-26T15:41:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MARK'S BLOG">
+<meta name="twitter:title" content="android：largeHeap属性的用法">
+<meta name="twitter:description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
 
 
 
@@ -107,7 +111,7 @@
   };
 </script>
 
-  <title> MARK'S BLOG </title>
+  <title> android：largeHeap属性的用法 | MARK'S BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -137,9 +141,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +238,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -258,10 +260,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/02/26/android：largeHeap属性的用法/" itemprop="url">
-                  android：largeHeap属性的用法
-                </a>
+                android：largeHeap属性的用法
               
             
           </h1>
@@ -327,171 +326,119 @@
       
 
       
-        
-          <p>如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/26/android：largeHeap属性的用法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+        <p>如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。</p>
+<a id="more"></a>
+<hr>
+<h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p>我们先了解一下关于程序设计中关于内存的基础概念。</p>
+<ul>
+<li>通常情况下，一个Android程序运行时会启动一个DVM虚拟机。</li>
+<li>虚拟机运行时一般分为堆和栈两大部门。（关于堆和栈的理解以后再讲）</li>
+<li>栈是储存方法调用的一片内存区域。</li>
+<li>堆内存占用了虚拟机大部分的内存空间，程序执行时产生的对象就分配在堆内存中。</li>
+<li>如果堆内存没用可用的空间来产生对象，JVM会抛出java.lang.OutOfMemoryError异常。</li>
+</ul>
+<hr>
+<h3 id="largeHeap的介绍"><a href="#largeHeap的介绍" class="headerlink" title="largeHeap的介绍"></a>largeHeap的介绍</h3><p>如果开启了largeHeap后，程序会请求系统给予分配更大的内存空间。使用方法如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">application</span> <span class="attr">android:icon</span>=<span class="string">"@drawable/icon"</span></span></div><div class="line">  <span class="attr">android:allowBackup</span>=<span class="string">"false"</span></div><div class="line">  <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span></div><div class="line">  <span class="attr">android:debuggable</span>=<span class="string">"true"</span></div><div class="line">  <span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.Black"</span></div><div class="line">    <span class="attr">android:largeHeap</span>=<span class="string">"true"</span></div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<hr>
+<h3 id="largeHeap-有多大"><a href="#largeHeap-有多大" class="headerlink" title="largeHeap 有多大"></a>largeHeap 有多大</h3><p>通过两个方法可以得到。</p>
+<ul>
+<li>ActivityManager.getMemoryClass()获得内用正常情况下内存的大小</li>
+<li>ActivityManager.getLargeMemoryClass()可以获得开启largeHeap最大的内存大小</li>
+</ul>
+<p>Android系统中文件路径<code>/system/build.prop</code>下可以得到结果。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dalvik.vm.heapstartsize=8m</div><div class="line">dalvik.vm.heapgrowthlimit=192m</div><div class="line">dalvik.vm.heapsize=512m</div><div class="line">dalvik.vm.heaptargetutilization=0.75</div><div class="line">dalvik.vm.heapminfree=2m</div><div class="line">dalvik.vm.heapmaxfree=8m</div></pre></td></tr></table></figure>
+<p><strong>dalvik.vm.heapstartsize=8m</strong></p>
+<p>这一项用来设置堆内存的初始大小。</p>
+<h4 id="dalvik-vm-heapgrowthlimit-192m"><a href="#dalvik-vm-heapgrowthlimit-192m" class="headerlink" title="dalvik.vm.heapgrowthlimit=192m"></a><strong>dalvik.vm.heapgrowthlimit=192m</strong></h4><p>这一项用来设置一个标准应用的最大内存大小，即是没有使用过largeHeap的内存大小。</p>
+<p><strong>dalvik.vm.heapsize=512m</strong></p>
+<p>相当于虚拟机的 -Xmx配置，该项设置了使用android:largeHeap的应用的最大堆内存大小。</p>
+<p><strong>dalvik.vm.heaptargetutilization=0.75</strong></p>
+<p>相当于虚拟机的 -XX:HeapTargetUtilization,该项用来设置当前理想的堆内存利用率。其取值位于0与1之间。当GC进行完垃圾回收之后，Dalvik的堆内存会进行相应的调整，通常结果是当前存活的对象的大小与堆内存大小做除法，得到的值为这个选项的设置，即这里的0.75。注意，这只是一个参考值，Dalvik虚拟机也可以忽略此设置。</p>
+<p><strong>dalvik.vm.heapminfree=2m</strong>与<strong>dalvik.vm.heapmaxfree=8m</strong></p>
+<p>dalvik.vm.heapminfree对应的是-XX:HeapMinFree配置，用来设置单次堆内存调整的最小值。<strong>dalvik.vm.heapmaxfree</strong>对应的是-XX:HeapMaxFree配置，用来设置单次堆内存调整的最大值。通常情况下，还需要结合上面的 -XX:HeapTargetUtilization的值，才能确定内存调整时，需要调整的大小。</p>
+<hr>
+<h3 id="largeHeap需要权限吗"><a href="#largeHeap需要权限吗" class="headerlink" title="largeHeap需要权限吗"></a>largeHeap需要权限吗</h3><p>只需要简单在Application元素上加入android:largeHeap=“true”就能正常使用，不需要权限。</p>
+<hr>
+<h3 id="largeHeap对GC的影响"><a href="#largeHeap对GC的影响" class="headerlink" title="largeHeap对GC的影响"></a>largeHeap对GC的影响</h3><p>拥有了更多的内存，是不是就意味着要花更多的时间遍历对象垃圾回收呢？其实不然。</p>
+<p>首先largeHeap自Android 4.0开始支持，而并发的垃圾回收方式从Android 2.3开始引入。</p>
+<p>在引入并发垃圾回收之前，系统采用了Stop-the-World回收方式，进行一次垃圾回收通常消耗几百毫秒，这是很影响交互和响应的。</p>
+<p>引入并发垃圾回收之后,在GC开始和结束的阶段会有短暂的暂停时间，通常在10毫秒以内。</p>
+<p>因此在支持largeHeap的系统上都采用了并发垃圾回收，GC的Pause Time不会很长，对交互响应影响甚微。</p>
+<hr>
+<h3 id="慎用largeHeap"><a href="#慎用largeHeap" class="headerlink" title="慎用largeHeap"></a>慎用largeHeap</h3><p>对于largeHeap的使用，我们该持有的谨慎的态度，largeHeap可以使用，但是要谨慎。</p>
+<p>对于本身对内存要求过大的图片或者视频应用，我们可以使用largeHeap。</p>
+
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/16/聊一聊单例模式/" itemprop="url">
-                  聊一聊单例模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T14:44:01+08:00" content="2017-02-16">
-              2017-02-16
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android基础/" itemprop="url" rel="index">
-                    <span itemprop="name">android基础</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/02/16/聊一聊单例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/聊一聊单例模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/android/" rel="tag">#android</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>单例模式是Android项目中最常用的设计模式。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/02/16/聊一聊单例模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/16/聊一聊单例模式/" rel="next" title="聊一聊单例模式">
+                <i class="fa fa-chevron-left"></i> 聊一聊单例模式
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
 
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/26/android：largeHeap属性的用法/"
+           data-title="android：largeHeap属性的用法" data-url="http://yoursite.com/2017/02/26/android：largeHeap属性的用法/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -511,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://avatar.csdn.net/0/C/E/1_olaohubuchiren1.jpg"
@@ -587,6 +543,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap的介绍"><span class="nav-number">2.</span> <span class="nav-text">largeHeap的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap-有多大"><span class="nav-number">3.</span> <span class="nav-text">largeHeap 有多大</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dalvik-vm-heapgrowthlimit-192m"><span class="nav-number">3.1.</span> <span class="nav-text">dalvik.vm.heapgrowthlimit=192m</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap需要权限吗"><span class="nav-number">4.</span> <span class="nav-text">largeHeap需要权限吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap对GC的影响"><span class="nav-number">5.</span> <span class="nav-text">largeHeap对GC的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慎用largeHeap"><span class="nav-number">6.</span> <span class="nav-text">慎用largeHeap</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -690,6 +657,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
