@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/02/26/android：largeHeap属性的用法/index.html">
 <meta property="og:site_name" content="MARK'S BLOG">
 <meta property="og:description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
-<meta property="og:updated_time" content="2017-02-26T15:41:12.000Z">
+<meta property="og:updated_time" content="2017-02-26T15:44:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android：largeHeap属性的用法">
 <meta name="twitter:description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
@@ -350,7 +350,8 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dalvik.vm.heapstartsize=8m</div><div class="line">dalvik.vm.heapgrowthlimit=192m</div><div class="line">dalvik.vm.heapsize=512m</div><div class="line">dalvik.vm.heaptargetutilization=0.75</div><div class="line">dalvik.vm.heapminfree=2m</div><div class="line">dalvik.vm.heapmaxfree=8m</div></pre></td></tr></table></figure>
 <p><strong>dalvik.vm.heapstartsize=8m</strong></p>
 <p>这一项用来设置堆内存的初始大小。</p>
-<h4 id="dalvik-vm-heapgrowthlimit-192m"><a href="#dalvik-vm-heapgrowthlimit-192m" class="headerlink" title="dalvik.vm.heapgrowthlimit=192m"></a><strong>dalvik.vm.heapgrowthlimit=192m</strong></h4><p>这一项用来设置一个标准应用的最大内存大小，即是没有使用过largeHeap的内存大小。</p>
+<p><strong>dalvik.vm.heapgrowthlimit=192m</strong></p>
+<p>这一项用来设置一个标准应用的最大内存大小，即是没有使用过largeHeap的内存大小。</p>
 <p><strong>dalvik.vm.heapsize=512m</strong></p>
 <p>相当于虚拟机的 -Xmx配置，该项设置了使用android:largeHeap的应用的最大堆内存大小。</p>
 <p><strong>dalvik.vm.heaptargetutilization=0.75</strong></p>
@@ -550,7 +551,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap的介绍"><span class="nav-number">2.</span> <span class="nav-text">largeHeap的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap-有多大"><span class="nav-number">3.</span> <span class="nav-text">largeHeap 有多大</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dalvik-vm-heapgrowthlimit-192m"><span class="nav-number">3.1.</span> <span class="nav-text">dalvik.vm.heapgrowthlimit=192m</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap需要权限吗"><span class="nav-number">4.</span> <span class="nav-text">largeHeap需要权限吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap对GC的影响"><span class="nav-number">5.</span> <span class="nav-text">largeHeap对GC的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慎用largeHeap"><span class="nav-number">6.</span> <span class="nav-text">慎用largeHeap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap的介绍"><span class="nav-number">2.</span> <span class="nav-text">largeHeap的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap-有多大"><span class="nav-number">3.</span> <span class="nav-text">largeHeap 有多大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap需要权限吗"><span class="nav-number">4.</span> <span class="nav-text">largeHeap需要权限吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap对GC的影响"><span class="nav-number">5.</span> <span class="nav-text">largeHeap对GC的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慎用largeHeap"><span class="nav-number">6.</span> <span class="nav-text">慎用largeHeap</span></a></li></ol></div>
             
           </div>
         </section>
