@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -84,13 +84,40 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="ArrayList和Vector的主要区别在于
+
+ArrayList是线程不安全的，但是性能很好，Vector是线程安全的，但性能不行。
+ArrayList初始大小是0（以前是10），每次扩容的大小为目前大小的一半。Vector每次扩容为目前大小的一倍。
+
+ArrayList处理线程同步问题的方法有两点
+
+在添加和删除时添加同步锁
+123synchronized(arraylistA) &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArrayList线程同步的方法">
+<meta property="og:url" content="http://yoursite.com/2017/03/04/ArrayList线程同步的方法/index.html">
 <meta property="og:site_name" content="MARK'S BLOG">
-<meta property="og:updated_time" content="2017-02-24T06:28:23.000Z">
+<meta property="og:description" content="ArrayList和Vector的主要区别在于
+
+ArrayList是线程不安全的，但是性能很好，Vector是线程安全的，但性能不行。
+ArrayList初始大小是0（以前是10），每次扩容的大小为目前大小的一半。Vector每次扩容为目前大小的一倍。
+
+ArrayList处理线程同步问题的方法有两点
+
+在添加和删除时添加同步锁
+123synchronized(arraylistA) &amp;#123">
+<meta property="og:updated_time" content="2017-03-04T15:12:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="ArrayList线程同步的方法">
+<meta name="twitter:description" content="ArrayList和Vector的主要区别在于
+
+ArrayList是线程不安全的，但是性能很好，Vector是线程安全的，但性能不行。
+ArrayList初始大小是0（以前是10），每次扩容的大小为目前大小的一半。Vector每次扩容为目前大小的一倍。
+
+ArrayList处理线程同步问题的方法有两点
+
+在添加和删除时添加同步锁
+123synchronized(arraylistA) &amp;#123">
 
 
 
@@ -108,13 +135,7 @@
   };
 </script>
 
-  <title>
-  
-
-  
-    分类 | MARK'S BLOG
-  
-</title>
+  <title> ArrayList线程同步的方法 | MARK'S BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -144,7 +165,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,16 +265,177 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 4 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ArrayList线程同步的方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-04T22:49:06+08:00" content="2017-03-04">
+              2017-03-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/04/ArrayList线程同步的方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/ArrayList线程同步的方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/android内存/">android内存</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/android基础/">android基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java基础/">java基础</a><span class="category-list-count">1</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ArrayList和Vector的主要区别在于</p>
+<ol>
+<li>ArrayList是线程不安全的，但是性能很好，Vector是线程安全的，但性能不行。</li>
+<li>ArrayList初始大小是0（以前是10），每次扩容的大小为目前大小的一半。Vector每次扩容为目前大小的一倍。</li>
+</ol>
+<p>ArrayList处理线程同步问题的方法有两点</p>
+<ol>
+<li><p>在添加和删除时添加同步锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">synchronized</span>(arraylistA) &#123; </div><div class="line">   	arraylistA.add(<span class="keyword">new</span> SomeClass()); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用集合中的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List listA = Collections.synchronizedList(<span class="keyword">new</span> ArrayList());</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样可以生成一个同步的List，但是当迭代器（Iterator）遍历时，照样需要加上同步锁。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag">#java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/02/Java中自动类型转换/" rel="next" title="Java中自动类型转换">
+                <i class="fa fa-chevron-left"></i> Java中自动类型转换
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/03/04/ArrayList线程同步的方法/"
+     data-title="ArrayList线程同步的方法"
+     data-content=""
+     data-url="http://yoursite.com/2017/03/04/ArrayList线程同步的方法/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -267,8 +449,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="categories/index.html"
-           data-title="categories" data-url="http://yoursite.com/categories/index.html">
+      <div class="ds-thread" data-thread-key="2017/03/04/ArrayList线程同步的方法/"
+           data-title="ArrayList线程同步的方法" data-url="http://yoursite.com/2017/03/04/ArrayList线程同步的方法/">
       </div>
     
   </div>
@@ -292,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://avatar.csdn.net/0/C/E/1_olaohubuchiren1.jpg"
@@ -368,6 +559,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -471,6 +673,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
