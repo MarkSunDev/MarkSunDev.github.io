@@ -90,13 +90,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/16/Java多线程的可见性/index.html">
 <meta property="og:site_name" content="MARK'S BLOG">
 <meta property="og:description" content="可见性的描述可见性：一个线程对共享的变量进行修改，能够及时的被其他线程看到。共享变量：如果一个变量在多个线程的工作内部中存在副本，那么这个变量就是这几个线程的共享变量。">
-<meta property="og:image" content="http://yoursite.com/media/14896539174643.jpg">
-<meta property="og:image" content="http://yoursite.com/media/14896541800860.jpg">
-<meta property="og:updated_time" content="2017-03-16T10:34:09.000Z">
+<meta property="og:image" content="http://om6a1m0ym.bkt.clouddn.com/17-3-23/38360259-file_1490235974257_8daf.jpg">
+<meta property="og:image" content="http://om6a1m0ym.bkt.clouddn.com/17-3-23/80029745-file_1490235974377_2e0f.jpg">
+<meta property="og:updated_time" content="2017-03-23T03:54:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程的可见性">
 <meta name="twitter:description" content="可见性的描述可见性：一个线程对共享的变量进行修改，能够及时的被其他线程看到。共享变量：如果一个变量在多个线程的工作内部中存在副本，那么这个变量就是这几个线程的共享变量。">
-<meta name="twitter:image" content="http://yoursite.com/media/14896539174643.jpg">
+<meta name="twitter:image" content="http://om6a1m0ym.bkt.clouddn.com/17-3-23/38360259-file_1490235974257_8daf.jpg">
 
 
 
@@ -334,7 +334,7 @@
 <h3 id="Java内存模型（JMM）"><a href="#Java内存模型（JMM）" class="headerlink" title="Java内存模型（JMM）"></a>Java内存模型（JMM）</h3><p>java内存模型描述了java程序中java程序中各种变量（线程共享变量）的访问规则，以及在JVM中将变量储存到内存和从内存中读取出变量这样的底层细节。</p>
 <ol>
 <li>所有的变量都储存在主内存中</li>
-<li><p>每个线程都有自己独立的工作内存，里面保存该线程使用到的变量的副本（主内存中该变量的一份拷贝）。<br><img src="media/14896539174643.jpg" alt=""></p>
+<li><p>每个线程都有自己独立的工作内存，里面保存该线程使用到的变量的副本（主内存中该变量的一份拷贝）。<br><img src="http://om6a1m0ym.bkt.clouddn.com/17-3-23/38360259-file_1490235974257_8daf.jpg" alt=""></p>
 <ol>
 <li>线程对共享变量的所有操作都必须在自己的工作内存中进行，不能直接从主内存中读写。</li>
 <li>不同线程之间无法直接访问其他线程工作内存中的变量，线程间变量值的传递需要通过主内存来完成。</li>
@@ -342,7 +342,7 @@
 <p>举个栗子：<br>线程1对共享变量的修改想要被线程2及时看到，必须要经过下面两个步骤</p>
 <ol>
 <li>把工作内存1中更新过的共享变量刷新到主内存中</li>
-<li>将主内存中最新的共享变量的值更新到工作内存2中<br><img src="media/14896541800860.jpg" alt=""><h3 id="可见性的实现"><a href="#可见性的实现" class="headerlink" title="可见性的实现"></a>可见性的实现</h3>首选要保证两点：</li>
+<li>将主内存中最新的共享变量的值更新到工作内存2中<br><img src="http://om6a1m0ym.bkt.clouddn.com/17-3-23/80029745-file_1490235974377_2e0f.jpg" alt=""><h3 id="可见性的实现"><a href="#可见性的实现" class="headerlink" title="可见性的实现"></a>可见性的实现</h3>首选要保证两点：</li>
 </ol>
 </li>
 <li>线程修改后的共享变量值能够及时从工作内存刷新到主内存中。</li>
@@ -416,6 +416,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/23/用数组实现队列/" rel="prev" title="用数组实现队列">
+                用数组实现队列 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -509,7 +513,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
