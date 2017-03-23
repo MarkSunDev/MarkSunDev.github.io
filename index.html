@@ -259,6 +259,246 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/23/二叉树/" itemprop="url">
+                  二叉树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T15:42:17+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/二叉树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/二叉树/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Node root;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Tree</span><span class="params">()</span> </span>&#123;</div><div class="line">		root = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">find</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">		Node current = root;</div><div class="line">		<span class="keyword">while</span>(current.iData != key) &#123;</div><div class="line">			<span class="keyword">if</span>(key &lt; current.iData) &#123;<span class="comment">//判断是否小于当前节点的值，如果小查询左树，如果大查询右树</span></div><div class="line">				current = current.leftChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				current = current.rightChild;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(current == <span class="keyword">null</span>) &#123;<span class="comment">//如果当前节点是null代表没有查到</span></div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> current;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 1、首先获得新插入的newNode</div><div class="line">	 * 2、 如果父节点Root==null，newNode就是父节点</div><div class="line">	 * 3、 如果已经有了父节点，先取出父节点parent</div><div class="line">	 * 4、判断父节点的值和id的大小，如果id大current移动到父节点的右节点，判断右节点有没有值，如果右节点没有值</div><div class="line">	 * <span class="doctag">@param</span> id</div><div class="line">	 * <span class="doctag">@param</span> dd</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">double</span> dd)</span> </span>&#123;</div><div class="line">		Node newNode = <span class="keyword">new</span> Node(id, dd);</div><div class="line">		<span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</div><div class="line">			root = newNode;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			Node current = root;</div><div class="line">			Node parent;</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">				parent = current;<span class="comment">//父节点</span></div><div class="line">				<span class="keyword">if</span>(id &lt; current.iData) &#123;</div><div class="line">					current = current.leftChild;</div><div class="line">					<span class="keyword">if</span>(current == <span class="keyword">null</span>) &#123;</div><div class="line">						parent.leftChild = newNode;</div><div class="line">						<span class="keyword">return</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;<span class="keyword">else</span> &#123;</div><div class="line">					current = current.rightChild;</div><div class="line">					<span class="keyword">if</span>(current == <span class="keyword">null</span>) &#123;</div><div class="line">						parent.rightChild = newNode;</div><div class="line">						<span class="keyword">return</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 前序排列</div><div class="line">	 * <span class="doctag">@param</span> localRoot</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(Node localRoot)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(localRoot != <span class="keyword">null</span>) &#123;</div><div class="line">			System.out.println(localRoot.iData + <span class="string">""</span>);</div><div class="line">			preOrder(localRoot.leftChild);</div><div class="line">			preOrder(localRoot.rightChild);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 中序排列</div><div class="line">	 * <span class="doctag">@param</span> localRoot</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(Node localRoot)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(localRoot != <span class="keyword">null</span>) &#123;</div><div class="line">			inOrder(localRoot.leftChild);</div><div class="line">			System.out.println(localRoot.iData + <span class="string">""</span>);</div><div class="line">			inOrder(localRoot.rightChild);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 后序排列</div><div class="line">	 * <span class="doctag">@param</span> localRoot</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(Node localRoot)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(localRoot != <span class="keyword">null</span>)&#123;</div><div class="line">		postOrder(localRoot.leftChild);</div><div class="line">		postOrder(localRoot.rightChild);</div><div class="line">		System.out.println(localRoot.iData + <span class="string">""</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 获得最新节点</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">minimun</span><span class="params">()</span> </span>&#123;</div><div class="line">		Node current, last = <span class="keyword">null</span>;</div><div class="line">		current = root;</div><div class="line">		<span class="keyword">while</span>(current != <span class="keyword">null</span>) &#123;</div><div class="line">			last = current;</div><div class="line">			current = current.leftChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> last;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 删除节点</div><div class="line">	 * <span class="doctag">@param</span> key</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">		Node current = root;</div><div class="line">		Node parent = root;</div><div class="line">		<span class="keyword">boolean</span> isLeftChild = <span class="keyword">true</span>;</div><div class="line">		<span class="keyword">while</span>(current.iData != key) &#123;</div><div class="line">			parent = current;</div><div class="line">			<span class="keyword">if</span>(key &lt; current.iData) &#123;</div><div class="line">				isLeftChild = <span class="keyword">true</span>;</div><div class="line">				current = current.leftChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				isLeftChild = <span class="keyword">false</span>;</div><div class="line">				current = current.rightChild;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (current == <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(current.leftChild == <span class="keyword">null</span> &amp;&amp; </div><div class="line">				current.rightChild == <span class="keyword">null</span>) &#123;<span class="comment">//没有子节点</span></div><div class="line">			<span class="keyword">if</span>(current == root) &#123;<span class="comment">//如果自己是根节点而且没有左右节点，意思就是删除整个树了，变成空数</span></div><div class="line">				root = <span class="keyword">null</span>;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(isLeftChild) &#123;<span class="comment">//如果不是根节点，同时没有子节点，而是一个父节点的左节点，直接设置为null代表删除</span></div><div class="line">				parent.leftChild = <span class="keyword">null</span>;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				parent.rightChild = <span class="keyword">null</span>;<span class="comment">//同上，右节点设置为null代表删除</span></div><div class="line">			&#125;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(current.rightChild == <span class="keyword">null</span>) &#123;<span class="comment">//如果当前节点的右节点是null，代表要删除的节点只有一个左节点</span></div><div class="line">			<span class="keyword">if</span>(current == root) &#123;<span class="comment">//是根节点，且有左节点</span></div><div class="line">				root = current.leftChild;<span class="comment">//把左节点设置成根节点</span></div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(isLeftChild) &#123;<span class="comment">//当前节点是父节点的左节点，把父节点的左节点设置成当前节点的左节点</span></div><div class="line">				parent.leftChild = current.leftChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;<span class="comment">//同上</span></div><div class="line">				parent.rightChild = current.leftChild;</div><div class="line">			&#125;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(current.leftChild == <span class="keyword">null</span>) &#123;<span class="comment">//同上，左节点为空，当前节点是父节点的右节点</span></div><div class="line">			<span class="keyword">if</span>(current == root) &#123;</div><div class="line">				root = current.rightChild;</div><div class="line">			&#125;<span class="keyword">else</span>  <span class="keyword">if</span>(isLeftChild) &#123;</div><div class="line">				parent.leftChild = current.rightChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				parent.rightChild = current.rightChild;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			Node successor = getSuccessor(current);</div><div class="line">			<span class="keyword">if</span>(current == root) &#123;</div><div class="line">				root = successor;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(isLeftChild) &#123;</div><div class="line">				parent.leftChild = successor;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				parent.rightChild = successor;</div><div class="line">			&#125;</div><div class="line">			successor.leftChild = current.leftChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> Node <span class="title">getSuccessor</span><span class="params">(Node delNode)</span> </span>&#123;</div><div class="line">		Node successorParent = delNode;</div><div class="line">		Node successor = delNode;</div><div class="line">		Node current = delNode.rightChild;</div><div class="line">		<span class="keyword">while</span>(current != <span class="keyword">null</span>) &#123;</div><div class="line">			successorParent = successor;</div><div class="line">			successor = current;</div><div class="line">			current = current.leftChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(successor != delNode.rightChild) &#123;</div><div class="line">			successorParent.leftChild = successor.rightChild;</div><div class="line">			successor.rightChild = delNode.rightChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> successor;</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/23/用数组实现栈/" itemprop="url">
+                  用数组实现栈
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T15:33:10+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/用数组实现栈/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/用数组实现栈/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 栈的建造</div><div class="line"> * <span class="doctag">@author</span> A</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 1. 不能从栈底插入数据</div><div class="line">	 * 2. 不能从栈中间插入数据</div><div class="line">	 * 3. 只能从栈顶插入数据</div><div class="line">	 * 4。 只能通过top访问数据</div><div class="line">	 */</div><div class="line">			</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] arr;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> top;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</div><div class="line">		top = -<span class="number">1</span>;<span class="comment">// 还没有任何元素，所以下标是-1</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.arr = <span class="keyword">new</span> <span class="keyword">int</span>[maxSize];</div><div class="line">		top = -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//压入数据</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">		arr[++top] = num;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> arr[top--];</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> arr[top];</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> top == -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> top == arr.length - <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/23/用数组实现队列/" itemprop="url">
                   用数组实现队列
                 </a>
@@ -278,6 +518,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -561,283 +820,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/进程和线程的区别/" itemprop="url">
-                  进程和线程的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T14:55:25+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/进程和线程的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/进程和线程的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>来自阮一峰的博客</strong></p>
-<ol>
-<li><p>计算机的核心是CPU，它承担了所有的计算任务。它就像是一个工厂，时刻在运行。</p>
-</li>
-<li><p>假设工程的电力有限，一次只能供给一个车间使用。也就是说，一个车间开工时，其他车间必须停滞，这个意思就是单个CPU一次只能运行一个任务。</p>
-</li>
-<li><p>进程就好比工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程。</p>
-</li>
-<li><p>一个车间里，可以有很多工人。他们协同完成一个任务。</p>
-</li>
-<li><p>线程就好比车间里的工人。一个进程可以包括多个线程。</p>
-</li>
-<li><p>车间的空间是工人们共享的，比如许多房间是每个工人都可以进入的。象征着一个进程的内存空间是共享的，每个线程都可以共享这片内存。</p>
-</li>
-<li><p>可是车间的空间是有限的，有些房间最多只能容纳一个人，比如洗手间。当里边有人的时候，其他人不能进入只能在门口等候，这代表一个线程使用某些共享内存的时候，其他线程必须等他结束才能使用这块内存。</p>
-</li>
-<li><p>一个用来防止他人进入的简单的办法，就是给门口加一把锁。先到的人锁住房间，后边的人看见房间上锁，就会在门口等候。这也就是所谓的“互斥锁”（Mutex），防止多个线程同事读取某一块内存。</p>
-</li>
-<li><p>还有些房间可以容纳许多人，比如厨房一次只能容纳N个人，多余N个人的时候，其他人必须在门口等候。这就好比某些内存区域只能供给固定数目的线程使用。</p>
-</li>
-<li><p>这个时候为了解决问题，就需要给门口挂上N把钥匙。进去的人带上一把，出来的时候把钥匙挂在门口。后来的人发现钥匙空了就知道要等待。这种做法叫做“信号量”（Semaphore）,用来保证多个线程不会互相冲突。不难看出，mutex是semaphore的一种特殊情况（n=1）。信号量完全可以代替互斥锁。但是，因为mutex较为简单，且效率高，所以在必须保证资源独占的情况下，还是采用这种设计。</p>
-</li>
-</ol>
-<p><strong>自己的理解</strong></p>
-<p>一、关于进程和线程，首先从定义上理解就有所不同  </p>
-<ol>
-<li><p>进程是什么？<br>是具有一定独立功能的程序、它是系统进行资源分配和调度的一个独立单位，重点在系统调度和单独的单位，也就是说进程是可以独立运行的一段程序。    </p>
-</li>
-<li><p>线程又是什么？<br>线程进程的一个实体，是CPU调度和分派的基本单位，他是比进程更小的能独立运行的基本单位，线程自己基本上不拥有系统资源。<br>在运行时，只是暂用一些计数器、寄存器和栈 。</p>
-</li>
-</ol>
-<p>二、他们之间的关系</p>
-<ol>
-<li><p>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程（通常说的主线程）。 </p>
-</li>
-<li><p>资源分配给进程，同一进程的所有线程共享该进程的所有资源。  </p>
-</li>
-<li><p>线程在执行过程中，需要协作同步。不同进程的线程间要利用消息通信的办法实现同步。</p>
-</li>
-<li><p>处理机分给线程，即真正在处理机上运行的是线程。    </p>
-</li>
-<li><p>线程是指进程内的一个执行单元，也是进程内的可调度实体。  </p>
-</li>
-</ol>
-<p>三、从三个角度来剖析二者之间的区别</p>
-<ol>
-<li><p>调度：线程作为调度和分配的基本单位，进程作为拥有资源的基本单位。</p>
-</li>
-<li><p>并发性：不仅进程之间可以并发执行，同一个进程的多个线程之间也可以并发执行。</p>
-</li>
-<li><p>拥有资源：进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/05/同步锁/" itemprop="url">
-                  同步锁
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-05T13:07:38+08:00" content="2017-03-05">
-              2017-03-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/05/同步锁/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/05/同步锁/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -878,7 +865,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -886,7 +873,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
