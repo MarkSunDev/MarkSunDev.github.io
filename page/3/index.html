@@ -259,140 +259,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/04/ArrayList线程同步的方法/" itemprop="url">
-                  ArrayList线程同步的方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-04T22:49:06+08:00" content="2017-03-04">
-              2017-03-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/04/ArrayList线程同步的方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/ArrayList线程同步的方法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ArrayList和Vector的主要区别在于</p>
-<ol>
-<li>ArrayList是线程不安全的，但是性能很好，Vector是线程安全的，但性能不行。</li>
-<li>ArrayList初始大小是0（以前是10），每次扩容的大小为目前大小的一半。Vector每次扩容为目前大小的一倍。</li>
-</ol>
-<p>ArrayList处理线程同步问题的方法有两点</p>
-<ol>
-<li><p>在添加和删除时添加同步锁</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">synchronized</span>(arraylistA) &#123; </div><div class="line">   	arraylistA.add(<span class="keyword">new</span> SomeClass()); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用集合中的方法：    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List listA = Collections.synchronizedList(<span class="keyword">new</span> ArrayList());</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这样可以生成一个同步的List，但是当迭代器（Iterator）遍历时，照样需要加上同步锁。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/03/02/Java中自动类型转换/" itemprop="url">
                   Java中自动类型转换
                 </a>
@@ -913,7 +779,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
