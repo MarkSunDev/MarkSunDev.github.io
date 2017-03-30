@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android," />
+  <meta name="keywords" content="Android源码," />
 
 
 
@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="单例模式是Android项目中最常用的设计模式。">
+<meta name="description" content="这里采用的是清华的镜像，国内可以直接访问，速度很快。如果想用Android官方镜像可以在下面找到地址。https://android.googlesource.com/platform/manifestAndroid官方给的下载编译源码的文章：http://source.android.com/source/initializing.html其实很多文章都参考了上面官方的文章，本文也不例外，只是把">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聊一聊单例模式">
-<meta property="og:url" content="http://yoursite.com/2017/02/16/聊一聊单例模式/index.html">
+<meta property="og:title" content="在Mac上下载与编译Aosp Android源码">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/Android源码/index.html">
 <meta property="og:site_name" content="MARK'S BLOG">
-<meta property="og:description" content="单例模式是Android项目中最常用的设计模式。">
-<meta property="og:updated_time" content="2017-02-24T07:08:52.000Z">
+<meta property="og:description" content="这里采用的是清华的镜像，国内可以直接访问，速度很快。如果想用Android官方镜像可以在下面找到地址。https://android.googlesource.com/platform/manifestAndroid官方给的下载编译源码的文章：http://source.android.com/source/initializing.html其实很多文章都参考了上面官方的文章，本文也不例外，只是把">
+<meta property="og:image" content="http://om6a1m0ym.bkt.clouddn.com/14908699378845.jpg">
+<meta property="og:updated_time" content="2017-03-30T10:51:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聊一聊单例模式">
-<meta name="twitter:description" content="单例模式是Android项目中最常用的设计模式。">
+<meta name="twitter:title" content="在Mac上下载与编译Aosp Android源码">
+<meta name="twitter:description" content="这里采用的是清华的镜像，国内可以直接访问，速度很快。如果想用Android官方镜像可以在下面找到地址。https://android.googlesource.com/platform/manifestAndroid官方给的下载编译源码的文章：http://source.android.com/source/initializing.html其实很多文章都参考了上面官方的文章，本文也不例外，只是把">
+<meta name="twitter:image" content="http://om6a1m0ym.bkt.clouddn.com/14908699378845.jpg">
 
 
 
@@ -111,7 +113,7 @@
   };
 </script>
 
-  <title> 聊一聊单例模式 | MARK'S BLOG </title>
+  <title> 在Mac上下载与编译Aosp Android源码 | MARK'S BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +262,7 @@
             
             
               
-                聊一聊单例模式
+                在Mac上下载与编译Aosp Android源码
               
             
           </h1>
@@ -272,8 +274,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T14:44:01+08:00" content="2017-02-16">
-              2017-02-16
+            <time itemprop="dateCreated" datetime="2017-03-30T18:46:53+08:00" content="2017-03-30">
+              2017-03-30
             </time>
           </span>
 
@@ -286,8 +288,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android基础/" itemprop="url" rel="index">
-                    <span itemprop="name">android基础</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -302,8 +304,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/16/聊一聊单例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/聊一聊单例模式/" itemprop="commentsCount"></span>
+                <a href="/2017/03/30/Android源码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/Android源码/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -326,24 +328,48 @@
       
 
       
-        <p>单例模式是Android项目中最常用的设计模式。</p>
-<a id="more"></a>
+        <p>这里采用的是清华的镜像，国内可以直接访问，速度很快。如果想用Android官方镜像可以在下面找到地址。<br><a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="external">https://android.googlesource.com/platform/manifest</a><br>Android官方给的下载编译源码的文章：<br><a href="http://source.android.com/source/initializing.html" target="_blank" rel="external">http://source.android.com/source/initializing.html</a><br>其实很多文章都参考了上面官方的文章，本文也不例外，只是把自己遇到的问题和坑记录一下，防止以后在掉进去。</p>
+<h2 id="配置Mac环境"><a href="#配置Mac环境" class="headerlink" title="配置Mac环境"></a>配置Mac环境</h2><p><strong>第一步 在Mac上创建一个大小写敏感的分区</strong><br>Mac上默认是不区分文件名大小写的，但是Android源码的目录中是区分大小写的，所以需要创建一块分区来存放解压后的源码文件，分区也就是通常意义上的镜像等意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil create -type SPARSE -fs &apos;Case-sensitive Journaled HFS+&apos; -size 80g ~/android.dmg</div></pre></td></tr></table></figure>
+<p>这里创建的大小为80G的硬盘，如果你的硬盘够大，最好创建的大一些，比如100G。因为我在编译源码的时候发现80G有时还不够用。<br>对于这个大小下面可以用语句来更改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil resize -size 100g ~/android.dmg.sparseimage</div></pre></td></tr></table></figure>
+<p>这里是100G。</p>
+<p><strong>第二步 加载这块分区</strong><br>直接上语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android</div></pre></td></tr></table></figure>
+<p><strong>第三步 下载安装辅助工具</strong></p>
+<ul>
+<li>安装Xcode</li>
+<li>安装MacPorts，找和自己系统一致的版本<br><a href="https://distfiles.macports.org/MacPorts/" target="_blank" rel="external">https://distfiles.macports.org/MacPorts/</a></li>
+<li>通过MacPorts按装make：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install gmake libsdl git gnupg</div></pre></td></tr></table></figure>
+<p><strong>第四步 打开文件描述限制</strong><br>mac系统默认只能打开1024个文件，而编译源码的时候可能会超过这个限制，所以需要在个人配置文件.bash_profile中做出设置。添加一下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#set the number of open files to be 1024</div><div class="line">ulimit -S -n 1024</div></pre></td></tr></table></figure>
+<p>至于~/.bash_profile你可以这样打开：</p>
 <ol>
-<li><p>饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>懒汉式，第一次使用时创建，解决饿汉式的资源浪费问题，但是有并发问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span>() </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == sInstance )&#123;</div><div class="line">      sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>synchronized修饰符，可以解决懒汉式中多线程并发的问题。但是用在getInstance方法上会导致性能下降，而且getInstance方法会调用多次。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == sInstance )&#123;</div><div class="line">      sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>双重判断模式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</div><div class="line">      <span class="keyword">synchronized</span>(SingleInstance.class)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</div><div class="line">          sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>volatile关键字，volatile关键字是轻型的synchronized,</p>
-</li>
+<li>启动终端Terminal</li>
+<li>进入当前用户的home目录<br>输入cd~</li>
+<li>创建.bash_profile<br>输入touch .bash_profile</li>
+<li>编辑.bash_profile文件<br>输入open -e .bash_profile</li>
+<li>添加上面内容，保存文件，关闭.bash_profile<br>source ~/.bash_profile</li>
 </ol>
+<p><strong>第五步 安装Repo</strong><br>Repo是一个辅助于Git管理Android版本及分支的工具。下载好的repo会在bin目录下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ mkdir ~/bin</div><div class="line">$ PATH=~/bin:$PATH</div><div class="line">$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">$ chmod a+x ~/bin/repo</div></pre></td></tr></table></figure>
+<p>第四行的意思是给予/bin/repo读写权限</p>
+<p><strong>第六步 下载源码</strong><br>清华大学TUNA镜像源<br><a href="https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar" target="_blank" rel="external">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</a><br>随便下载到哪里都可以，下载完成后在本目录执行以下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ tar xf aosp-latest.tar</div><div class="line">$ cd AOSP   # 解压得到的 AOSP 工程目录</div><div class="line">$ repo sync # 正常同步一遍即可得到完整目录, 这一步时间很长，耐心等待。</div></pre></td></tr></table></figure>
+<p>如果出现问题卡主了，就重新执行repo snyc，如果想停止可以Ctrl+C。Repo 是断点续传的，但如果断了还是需要多下载一些重复下载的东西。<br>如果是执行repo错了的话，就重新执行第五步</p>
+<p><strong>第七步 进入分区</strong><br>先把上面解压和同步完的源码拷贝到你的分区中，注意要把整个aosp文件夹都拷过去，只要拷贝到分区根目录就行。<br>接着我们进入这个aosp目录中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /Volumes/android/AOSP/</div></pre></td></tr></table></figure>
+<p>如果出现找不到文件夹的错误信息，注意看是否挂载了分区</p>
+<p><strong>第八步 编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ source build/envsetup.sh</div><div class="line">$ lunch aosp_arm-eng</div><div class="line">$ sudo make -j4</div></pre></td></tr></table></figure>
+<p>j4是执行4个核心编译的意思。<br>不用管编译的过程出现多少警告，只有出现错误的时候才需要解决。解决错误以后重新执行<code>sudo make -j4</code>就行了。<br>编译成功后继续在源码根目录执行以下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mmm development/tools/idegen/</div><div class="line">$ sh ./development/tools/idegen/idegen.sh</div></pre></td></tr></table></figure>
+<p>完成后就会在aosp根目录生成android.ipr文件，在就Android stuido中打开这个ipr文件就算是打开源码了。等indexing执行完成后就可以正常阅读了。</p>
+<p><strong>遇到的编译错误</strong><br><img src="http://om6a1m0ym.bkt.clouddn.com/14908699378845.jpg" alt=""><br>没有配置ANDROID_JAVA_HOME环境变量，在bash_profile中配置成和JAVA_HOME一样即可。<br>我在配置后编译还是会出现同样的错误，最后在找了一天没有结果的时候重启电脑就好了。</p>
+<p><code>fatal error: linux/netfilter/xt_DSCP.h: No such file or directory</code><br>这个错误的解决办法是创建一个名为xt_DSCP.h（注意大写）的文件，放在aosp文件中的external/iptables/extensions/../include/linux/netfilter下，xt_DSCP.h内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* based on ipt_FTOS.c (C) 2000 by Matthew G. Marsh &lt;mgm@paktronix.com&gt;</div><div class="line">* This software is distributed under GNU GPL v2, 1991</div><div class="line">*</div><div class="line">* See RFC2474 for a description of the DSCP field within the IP Header.</div><div class="line">*</div><div class="line">* xt_DSCP.h,v 1.7 2002/03/14 12:03:13 laforge Exp</div><div class="line">*/</div><div class="line">#ifndef _XT_DSCP_TARGET_H</div><div class="line">#define _XT_DSCP_TARGET_H</div><div class="line">#include &lt;linux/netfilter/xt_dscp.h&gt;</div><div class="line">#include &lt;linux/types.h&gt;</div><div class="line"></div><div class="line">/* target info */</div><div class="line">struct xt_DSCP_info &#123;</div><div class="line">    __u8 dscp;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct xt_tos_target_info &#123;</div><div class="line">    __u8 tos_value;</div><div class="line">    __u8 tos_mask;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">#endif /* _XT_DSCP_TARGET_H */</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,7 +391,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag">#android</a>
+            <a href="/tags/Android源码/" rel="tag">#Android源码</a>
           
         </div>
       
@@ -374,13 +400,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/23/ListView源码解析/" rel="next" title="ListView源码解析">
+                <i class="fa fa-chevron-left"></i> ListView源码解析
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/26/android：largeHeap属性的用法/" rel="prev" title="android：largeHeap属性的用法">
-                android：largeHeap属性的用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -395,10 +421,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/02/16/聊一聊单例模式/"
-     data-title="聊一聊单例模式"
+        <div class="ds-share flat" data-thread-key="2017/03/30/Android源码/"
+     data-title="在Mac上下载与编译Aosp Android源码"
      data-content=""
-     data-url="http://yoursite.com/2017/02/16/聊一聊单例模式/">
+     data-url="http://yoursite.com/2017/03/30/Android源码/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -428,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/16/聊一聊单例模式/"
-           data-title="聊一聊单例模式" data-url="http://yoursite.com/2017/02/16/聊一聊单例模式/">
+      <div class="ds-thread" data-thread-key="2017/03/30/Android源码/"
+           data-title="在Mac上下载与编译Aosp Android源码" data-url="http://yoursite.com/2017/03/30/Android源码/">
       </div>
     
   </div>
@@ -545,7 +571,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Mac环境"><span class="nav-number">1.</span> <span class="nav-text">配置Mac环境</span></a></li></ol></div>
             
           </div>
         </section>
