@@ -259,6 +259,134 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/25/JVM和DVM的区别/" itemprop="url">
+                  JVM和DVM的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-25T17:42:24+08:00" content="2017-04-25">
+              2017-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/25/JVM和DVM的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/JVM和DVM的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>首要差别<br>Dalvik: 基于寄存器，编译和运行都会更快些<br>JVM: 基于栈, 编译和运行都会慢些</p>
+</li>
+<li><p>字节码的区别<br>Dalvik: 执行.dex格式的字节码，是对.class文件进行压缩后产生的,文件变小<br>JVM: 执行.class格式的字节码<br>JAVA –》.java文件 -&gt; .class文件 -&gt; .jar文件<br>Android –》.java文件 –&gt; .class文件 -&gt; .dex文件</p>
+</li>
+<li><p>运行环境的区别 　 　<br>Dalvik : 一个应用启动都运行一个单独的虚拟机运行在一个单独的进程中<br>JVM: 只能运行一个实例, 也就是所有应用都运行在同一个JVM中</p>
+</li>
+</ol>
+<p>Java基于栈的架构.栈是内存上面的一段连续的存储空间<br>Android基于寄存器的架构.寄存器是CPU上面的一块存储空间<br>所以，CPU直接访问自己上面的一块空间的数据的效率肯定要大于访问内存上面的数据</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/30/在Mac上下载与编译Aosp Android源码/" itemprop="url">
                   在Mac上下载与编译Aosp Android源码
                 </a>
@@ -371,6 +499,8 @@
 <p><strong>遇到的编译错误</strong><br><img src="http://om6a1m0ym.bkt.clouddn.com/14908699378845.jpg" alt=""><br>没有配置ANDROID_JAVA_HOME环境变量，在bash_profile中配置成和JAVA_HOME一样即可。<br>我在配置后编译还是会出现同样的错误，最后在找了一天没有结果的时候重启电脑就好了。</p>
 <p><code>fatal error: linux/netfilter/xt_DSCP.h: No such file or directory</code><br>这个错误的解决办法是创建一个名为xt_DSCP.h（注意大写）的文件，放在aosp文件中的external/iptables/extensions/../include/linux/netfilter下，xt_DSCP.h内容如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* based on ipt_FTOS.c (C) 2000 by Matthew G. Marsh &lt;mgm@paktronix.com&gt;</div><div class="line">* This software is distributed under GNU GPL v2, 1991</div><div class="line">*</div><div class="line">* See RFC2474 for a description of the DSCP field within the IP Header.</div><div class="line">*</div><div class="line">* xt_DSCP.h,v 1.7 2002/03/14 12:03:13 laforge Exp</div><div class="line">*/</div><div class="line">#ifndef _XT_DSCP_TARGET_H</div><div class="line">#define _XT_DSCP_TARGET_H</div><div class="line">#include &lt;linux/netfilter/xt_dscp.h&gt;</div><div class="line">#include &lt;linux/types.h&gt;</div><div class="line"></div><div class="line">/* target info */</div><div class="line">struct xt_DSCP_info &#123;</div><div class="line">    __u8 dscp;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct xt_tos_target_info &#123;</div><div class="line">    __u8 tos_value;</div><div class="line">    __u8 tos_mask;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">#endif /* _XT_DSCP_TARGET_H */</div></pre></td></tr></table></figure>
+<p>bash_profile文件如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">export PATH=$&#123;PATH&#125;:/Users/xjw/Library/Android/sdk/platform-tools</div><div class="line">export PATH=$&#123;PATH&#125;:/Users/xjw/Library/Android/sdk/tools</div><div class="line"></div><div class="line">#配置JDK环境</div><div class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home</div><div class="line">export PATH=$JAVA_HOME/bin:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</div><div class="line"></div><div class="line"></div><div class="line">export ANDROID_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/</div><div class="line"></div><div class="line">#源码编译时，需要设置系统的最大值 &lt;br/&gt;</div><div class="line">ulimit -S -n 1024</div><div class="line"></div><div class="line"></div><div class="line"># MacPorts Installer addition on 2017-03-27_at_10:42:35: adding an appropriate PATH variable for use with MacPorts.</div><div class="line">export PATH=&quot;/opt/local/bin:/opt/local/sbin:$PATH&quot;</div><div class="line"># Finished adapting your PATH environment variable for use with MacPorts.</div></pre></td></tr></table></figure>
 
           
         
@@ -761,126 +891,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/23/用数组实现队列/" itemprop="url">
-                  用数组实现队列
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-23T10:11:19+08:00" content="2017-03-23">
-              2017-03-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/23/用数组实现队列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/用数组实现队列/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> maxSize;<span class="comment">// 数组初始化长度</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">long</span>[] queue;<span class="comment">//队列</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> front;<span class="comment">//头指针</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> rear;<span class="comment">//尾指针</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> emels;<span class="comment">//有效数据</span></div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.maxSize= size;</div><div class="line">		queue = <span class="keyword">new</span> <span class="keyword">long</span>[size];</div><div class="line">		front = <span class="number">0</span>;</div><div class="line">		rear = -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">long</span> j)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(isFull())&#123;</div><div class="line">			rear = -<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		queue[++rear] = j;</div><div class="line">		emels++;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">delete</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">long</span> tmp = queue[front++];</div><div class="line">		<span class="keyword">if</span>(front == maxSize) &#123;</div><div class="line">			front = <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		 emels--;</div><div class="line">		 <span class="keyword">return</span> tmp; </div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> emels == <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> emels == maxSize - <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Size</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> emels;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -926,7 +936,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -943,7 +953,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

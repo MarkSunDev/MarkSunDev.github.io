@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="android," />
+  <meta name="keywords" content="操作系统," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="单例模式是Android项目中最常用的设计模式。">
+<meta name="description" content="首要差别Dalvik: 基于寄存器，编译和运行都会更快些JVM: 基于栈, 编译和运行都会慢些
+
+字节码的区别Dalvik: 执行.dex格式的字节码，是对.class文件进行压缩后产生的,文件变小JVM: 执行.class格式的字节码JAVA –》.java文件 -&amp;gt; .class文件 -&amp;gt; .jar文件Android –》.java文件 –&amp;gt; .class文件 -&amp;gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聊一聊单例模式">
-<meta property="og:url" content="http://yoursite.com/2017/02/16/聊一聊单例模式/index.html">
+<meta property="og:title" content="JVM和DVM的区别">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/JVM和DVM的区别/index.html">
 <meta property="og:site_name" content="MARK'S BLOG">
-<meta property="og:description" content="单例模式是Android项目中最常用的设计模式。">
-<meta property="og:updated_time" content="2017-02-24T07:08:52.000Z">
+<meta property="og:description" content="首要差别Dalvik: 基于寄存器，编译和运行都会更快些JVM: 基于栈, 编译和运行都会慢些
+
+字节码的区别Dalvik: 执行.dex格式的字节码，是对.class文件进行压缩后产生的,文件变小JVM: 执行.class格式的字节码JAVA –》.java文件 -&amp;gt; .class文件 -&amp;gt; .jar文件Android –》.java文件 –&amp;gt; .class文件 -&amp;gt;">
+<meta property="og:updated_time" content="2017-04-25T09:46:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聊一聊单例模式">
-<meta name="twitter:description" content="单例模式是Android项目中最常用的设计模式。">
+<meta name="twitter:title" content="JVM和DVM的区别">
+<meta name="twitter:description" content="首要差别Dalvik: 基于寄存器，编译和运行都会更快些JVM: 基于栈, 编译和运行都会慢些
+
+字节码的区别Dalvik: 执行.dex格式的字节码，是对.class文件进行压缩后产生的,文件变小JVM: 执行.class格式的字节码JAVA –》.java文件 -&amp;gt; .class文件 -&amp;gt; .jar文件Android –》.java文件 –&amp;gt; .class文件 -&amp;gt;">
 
 
 
@@ -111,7 +117,7 @@
   };
 </script>
 
-  <title> 聊一聊单例模式 | MARK'S BLOG </title>
+  <title> JVM和DVM的区别 | MARK'S BLOG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +266,7 @@
             
             
               
-                聊一聊单例模式
+                JVM和DVM的区别
               
             
           </h1>
@@ -272,8 +278,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-16T14:44:01+08:00" content="2017-02-16">
-              2017-02-16
+            <time itemprop="dateCreated" datetime="2017-04-25T17:42:24+08:00" content="2017-04-25">
+              2017-04-25
             </time>
           </span>
 
@@ -286,8 +292,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android基础/" itemprop="url" rel="index">
-                    <span itemprop="name">android基础</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -302,8 +308,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/16/聊一聊单例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/16/聊一聊单例模式/" itemprop="commentsCount"></span>
+                <a href="/2017/04/25/JVM和DVM的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/JVM和DVM的区别/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -326,24 +332,15 @@
       
 
       
-        <p>单例模式是Android项目中最常用的设计模式。</p>
-<a id="more"></a>
-<ol>
-<li><p>饿汉式,通过静态变量实现。常驻内存，不使用时资源浪费。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <ol>
+<li><p>首要差别<br>Dalvik: 基于寄存器，编译和运行都会更快些<br>JVM: 基于栈, 编译和运行都会慢些</p>
 </li>
-<li><p>懒汉式，第一次使用时创建，解决饿汉式的资源浪费问题，但是有并发问题。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span>() </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == sInstance )&#123;</div><div class="line">      sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><p>字节码的区别<br>Dalvik: 执行.dex格式的字节码，是对.class文件进行压缩后产生的,文件变小<br>JVM: 执行.class格式的字节码<br>JAVA –》.java文件 -&gt; .class文件 -&gt; .jar文件<br>Android –》.java文件 –&gt; .class文件 -&gt; .dex文件</p>
 </li>
-<li><p>synchronized修饰符，可以解决懒汉式中多线程并发的问题。但是用在getInstance方法上会导致性能下降，而且getInstance方法会调用多次。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> == sInstance )&#123;</div><div class="line">      sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>双重判断模式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</div><div class="line">      <span class="keyword">synchronized</span>(SingleInstance.class)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</div><div class="line">          sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>volatile关键字，volatile关键字是轻型的synchronized,</p>
+<li><p>运行环境的区别 　 　<br>Dalvik : 一个应用启动都运行一个单独的虚拟机运行在一个单独的进程中<br>JVM: 只能运行一个实例, 也就是所有应用都运行在同一个JVM中</p>
 </li>
 </ol>
+<p>Java基于栈的架构.栈是内存上面的一段连续的存储空间<br>Android基于寄存器的架构.寄存器是CPU上面的一块存储空间<br>所以，CPU直接访问自己上面的一块空间的数据的效率肯定要大于访问内存上面的数据</p>
 
       
     </div>
@@ -365,7 +362,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/android/" rel="tag">#android</a>
+            <a href="/tags/操作系统/" rel="tag">#操作系统</a>
           
         </div>
       
@@ -374,13 +371,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/03/30/在Mac上下载与编译Aosp Android源码/" rel="next" title="在Mac上下载与编译Aosp Android源码">
+                <i class="fa fa-chevron-left"></i> 在Mac上下载与编译Aosp Android源码
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/26/android：largeHeap属性的用法/" rel="prev" title="android：largeHeap属性的用法">
-                android：largeHeap属性的用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -395,10 +392,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/02/16/聊一聊单例模式/"
-     data-title="聊一聊单例模式"
+        <div class="ds-share flat" data-thread-key="2017/04/25/JVM和DVM的区别/"
+     data-title="JVM和DVM的区别"
      data-content=""
-     data-url="http://yoursite.com/2017/02/16/聊一聊单例模式/">
+     data-url="http://yoursite.com/2017/04/25/JVM和DVM的区别/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -428,8 +425,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/02/16/聊一聊单例模式/"
-           data-title="聊一聊单例模式" data-url="http://yoursite.com/2017/02/16/聊一聊单例模式/">
+      <div class="ds-thread" data-thread-key="2017/04/25/JVM和DVM的区别/"
+           data-title="JVM和DVM的区别" data-url="http://yoursite.com/2017/04/25/JVM和DVM的区别/">
       </div>
     
   </div>
