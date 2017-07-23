@@ -259,6 +259,297 @@
             
               
                 
+                <a class="post-title-link" href="/2017/04/25/JVM和DVM的区别/" itemprop="url">
+                  JVM和DVM的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-25T17:42:24+08:00" content="2017-04-25">
+              2017-04-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/25/JVM和DVM的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/JVM和DVM的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>首要差别<br>Dalvik: 基于寄存器，编译和运行都会更快些<br>JVM: 基于栈, 编译和运行都会慢些</p>
+</li>
+<li><p>字节码的区别<br>Dalvik: 执行.dex格式的字节码，是对.class文件进行压缩后产生的,文件变小<br>JVM: 执行.class格式的字节码<br>JAVA –》.java文件 -&gt; .class文件 -&gt; .jar文件<br>Android –》.java文件 –&gt; .class文件 -&gt; .dex文件</p>
+</li>
+<li><p>运行环境的区别 　 　<br>Dalvik : 一个应用启动都运行一个单独的虚拟机运行在一个单独的进程中<br>JVM: 只能运行一个实例, 也就是所有应用都运行在同一个JVM中</p>
+</li>
+</ol>
+<p>Java基于栈的架构.栈是内存上面的一段连续的存储空间<br>Android基于寄存器的架构.寄存器是CPU上面的一块存储空间<br>所以，CPU直接访问自己上面的一块空间的数据的效率肯定要大于访问内存上面的数据</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/30/在Mac上下载与编译Aosp Android源码/" itemprop="url">
+                  在Mac上下载与编译Aosp Android源码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-30T18:46:53+08:00" content="2017-03-30">
+              2017-03-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/30/在Mac上下载与编译Aosp Android源码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/在Mac上下载与编译Aosp Android源码/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里采用的是清华的镜像，国内可以直接访问，速度很快。如果想用Android官方镜像可以在下面找到地址。<br><a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="external">https://android.googlesource.com/platform/manifest</a><br>Android官方给的下载编译源码的文章：<br><a href="http://source.android.com/source/initializing.html" target="_blank" rel="external">http://source.android.com/source/initializing.html</a><br>其实很多文章都参考了上面官方的文章，本文也不例外，只是把自己遇到的问题和坑记录一下，防止以后在掉进去。</p>
+<h2 id="配置Mac环境"><a href="#配置Mac环境" class="headerlink" title="配置Mac环境"></a>配置Mac环境</h2><p><strong>第一步 在Mac上创建一个大小写敏感的分区</strong><br>Mac上默认是不区分文件名大小写的，但是Android源码的目录中是区分大小写的，所以需要创建一块分区来存放解压后的源码文件，分区也就是通常意义上的镜像等意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil create -type SPARSE -fs &apos;Case-sensitive Journaled HFS+&apos; -size 80g ~/android.dmg</div></pre></td></tr></table></figure>
+<p>这里创建的大小为80G的硬盘，如果你的硬盘够大，最好创建的大一些，比如100G。因为我在编译源码的时候发现80G有时还不够用。<br>对于这个大小下面可以用语句来更改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil resize -size 100g ~/android.dmg.sparseimage</div></pre></td></tr></table></figure>
+<p>这里是100G。</p>
+<p><strong>第二步 加载这块分区</strong><br>直接上语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android</div></pre></td></tr></table></figure>
+<p><strong>第三步 下载安装辅助工具</strong></p>
+<ul>
+<li>安装Xcode</li>
+<li>安装MacPorts，找和自己系统一致的版本<br><a href="https://distfiles.macports.org/MacPorts/" target="_blank" rel="external">https://distfiles.macports.org/MacPorts/</a></li>
+<li>通过MacPorts按装make：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install gmake libsdl git gnupg</div></pre></td></tr></table></figure>
+<p><strong>第四步 打开文件描述限制</strong><br>mac系统默认只能打开1024个文件，而编译源码的时候可能会超过这个限制，所以需要在个人配置文件.bash_profile中做出设置。添加一下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#set the number of open files to be 1024</div><div class="line">ulimit -S -n 1024</div></pre></td></tr></table></figure>
+<p>至于~/.bash_profile你可以这样打开：</p>
+<ol>
+<li>启动终端Terminal</li>
+<li>进入当前用户的home目录<br>输入cd~</li>
+<li>创建.bash_profile<br>输入touch .bash_profile</li>
+<li>编辑.bash_profile文件<br>输入open -e .bash_profile</li>
+<li>添加上面内容，保存文件，关闭.bash_profile<br>source ~/.bash_profile</li>
+</ol>
+<p><strong>第五步 安装Repo</strong><br>Repo是一个辅助于Git管理Android版本及分支的工具。下载好的repo会在bin目录下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ mkdir ~/bin</div><div class="line">$ PATH=~/bin:$PATH</div><div class="line">$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">$ chmod a+x ~/bin/repo</div></pre></td></tr></table></figure>
+<p>第四行的意思是给予/bin/repo读写权限</p>
+<p><strong>第六步 下载源码</strong><br>清华大学TUNA镜像源<br><a href="https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar" target="_blank" rel="external">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</a><br>随便下载到哪里都可以，下载完成后在本目录执行以下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ tar xf aosp-latest.tar</div><div class="line">$ cd AOSP   # 解压得到的 AOSP 工程目录</div><div class="line">$ repo sync # 正常同步一遍即可得到完整目录, 这一步时间很长，耐心等待。</div></pre></td></tr></table></figure>
+<p>如果出现问题卡主了，就重新执行repo snyc，如果想停止可以Ctrl+C。Repo 是断点续传的，但如果断了还是需要多下载一些重复下载的东西。<br>如果是执行repo错了的话，就重新执行第五步</p>
+<p><strong>第七步 进入分区</strong><br>先把上面解压和同步完的源码拷贝到你的分区中，注意要把整个aosp文件夹都拷过去，只要拷贝到分区根目录就行。<br>接着我们进入这个aosp目录中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /Volumes/android/AOSP/</div></pre></td></tr></table></figure>
+<p>如果出现找不到文件夹的错误信息，注意看是否挂载了分区</p>
+<p><strong>第八步 编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ source build/envsetup.sh</div><div class="line">$ lunch aosp_arm-eng</div><div class="line">$ sudo make -j4</div></pre></td></tr></table></figure>
+<p>j4是执行4个核心编译的意思。<br>不用管编译的过程出现多少警告，只有出现错误的时候才需要解决。解决错误以后重新执行<code>sudo make -j4</code>就行了。<br>编译成功后继续在源码根目录执行以下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mmm development/tools/idegen/</div><div class="line">$ sh ./development/tools/idegen/idegen.sh</div></pre></td></tr></table></figure>
+<p>完成后就会在aosp根目录生成android.ipr文件，在就Android stuido中打开这个ipr文件就算是打开源码了。等indexing执行完成后就可以正常阅读了。</p>
+<p><strong>遇到的编译错误</strong><br><img src="http://om6a1m0ym.bkt.clouddn.com/14908699378845.jpg" alt=""><br>没有配置ANDROID_JAVA_HOME环境变量，在bash_profile中配置成和JAVA_HOME一样即可。<br>我在配置后编译还是会出现同样的错误，最后在找了一天没有结果的时候重启电脑就好了。</p>
+<p><code>fatal error: linux/netfilter/xt_DSCP.h: No such file or directory</code><br>这个错误的解决办法是创建一个名为xt_DSCP.h（注意大写）的文件，放在aosp文件中的external/iptables/extensions/../include/linux/netfilter下，xt_DSCP.h内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* based on ipt_FTOS.c (C) 2000 by Matthew G. Marsh &lt;mgm@paktronix.com&gt;</div><div class="line">* This software is distributed under GNU GPL v2, 1991</div><div class="line">*</div><div class="line">* See RFC2474 for a description of the DSCP field within the IP Header.</div><div class="line">*</div><div class="line">* xt_DSCP.h,v 1.7 2002/03/14 12:03:13 laforge Exp</div><div class="line">*/</div><div class="line">#ifndef _XT_DSCP_TARGET_H</div><div class="line">#define _XT_DSCP_TARGET_H</div><div class="line">#include &lt;linux/netfilter/xt_dscp.h&gt;</div><div class="line">#include &lt;linux/types.h&gt;</div><div class="line"></div><div class="line">/* target info */</div><div class="line">struct xt_DSCP_info &#123;</div><div class="line">    __u8 dscp;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct xt_tos_target_info &#123;</div><div class="line">    __u8 tos_value;</div><div class="line">    __u8 tos_mask;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">#endif /* _XT_DSCP_TARGET_H */</div></pre></td></tr></table></figure>
+<p>bash_profile文件如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">export PATH=$&#123;PATH&#125;:/Users/xjw/Library/Android/sdk/platform-tools</div><div class="line">export PATH=$&#123;PATH&#125;:/Users/xjw/Library/Android/sdk/tools</div><div class="line"></div><div class="line">#配置JDK环境</div><div class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home</div><div class="line">export PATH=$JAVA_HOME/bin:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</div><div class="line"></div><div class="line"></div><div class="line">export ANDROID_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/</div><div class="line"></div><div class="line">#源码编译时，需要设置系统的最大值 &lt;br/&gt;</div><div class="line">ulimit -S -n 1024</div><div class="line"></div><div class="line"></div><div class="line"># MacPorts Installer addition on 2017-03-27_at_10:42:35: adding an appropriate PATH variable for use with MacPorts.</div><div class="line">export PATH=&quot;/opt/local/bin:/opt/local/sbin:$PATH&quot;</div><div class="line"># Finished adapting your PATH environment variable for use with MacPorts.</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/23/ListView源码解析/" itemprop="url">
                   ListView源码解析
                 </a>
@@ -600,248 +891,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/23/用数组实现队列/" itemprop="url">
-                  用数组实现队列
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-23T10:11:19+08:00" content="2017-03-23">
-              2017-03-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/23/用数组实现队列/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/用数组实现队列/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> maxSize;<span class="comment">// 数组初始化长度</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">long</span>[] queue;<span class="comment">//队列</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> front;<span class="comment">//头指针</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> rear;<span class="comment">//尾指针</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> emels;<span class="comment">//有效数据</span></div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.maxSize= size;</div><div class="line">		queue = <span class="keyword">new</span> <span class="keyword">long</span>[size];</div><div class="line">		front = <span class="number">0</span>;</div><div class="line">		rear = -<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">long</span> j)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(isFull())&#123;</div><div class="line">			rear = -<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		queue[++rear] = j;</div><div class="line">		emels++;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">delete</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">long</span> tmp = queue[front++];</div><div class="line">		<span class="keyword">if</span>(front == maxSize) &#123;</div><div class="line">			front = <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		 emels--;</div><div class="line">		 <span class="keyword">return</span> tmp; </div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> emels == <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isFull</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> emels == maxSize - <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Size</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> emels;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/Java多线程的可见性/" itemprop="url">
-                  Java多线程的可见性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-16T11:03:20+08:00" content="2017-03-16">
-              2017-03-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java线程/" itemprop="url" rel="index">
-                    <span itemprop="name">Java线程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/16/Java多线程的可见性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/Java多线程的可见性/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="可见性的描述"><a href="#可见性的描述" class="headerlink" title="可见性的描述"></a>可见性的描述</h3><p>可见性：一个线程对共享的变量进行修改，能够及时的被其他线程看到。<br>共享变量：如果一个变量在多个线程的工作内部中存在副本，那么这个变量就是这几个线程的共享变量。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/16/Java多线程的可见性/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -879,7 +928,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://avatar.csdn.net/0/C/E/1_olaohubuchiren1.jpg"
+               src="http://om6a1m0ym.bkt.clouddn.com/17-7-23/42125239.jpg"
                alt="Mark Sun" />
           <p class="site-author-name" itemprop="name">Mark Sun</p>
           <p class="site-description motion-element" itemprop="description"></p>
@@ -887,7 +936,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -895,7 +944,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
