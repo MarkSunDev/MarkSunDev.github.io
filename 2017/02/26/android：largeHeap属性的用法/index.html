@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
+<meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android：largeHeap属性的用法">
 <meta property="og:url" content="http://yoursite.com/2017/02/26/android：largeHeap属性的用法/index.html">
-<meta property="og:site_name" content="MARK'S BLOG">
+<meta property="og:site_name" content="MARK&#39;S BLOG">
 <meta property="og:description" content="如果遇到OutOfMemoryError这样的崩溃，产生的原因主要有两部分，一时内存太小不够用了，二是代码有误，不能及时释放内存，基本后者的情况遇到的最多。这时，我们可以考虑使用android:largeHeap属性来解决内存不够用的问题。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-02-26T15:44:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android：largeHeap属性的用法">
@@ -574,7 +576,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text">基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap的介绍"><span class="nav-number">2.</span> <span class="nav-text">largeHeap的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap-有多大"><span class="nav-number">3.</span> <span class="nav-text">largeHeap 有多大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap需要权限吗"><span class="nav-number">4.</span> <span class="nav-text">largeHeap需要权限吗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap对GC的影响"><span class="nav-number">5.</span> <span class="nav-text">largeHeap对GC的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慎用largeHeap"><span class="nav-number">6.</span> <span class="nav-text">慎用largeHeap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础概念"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x7840;&#x6982;&#x5FF5;" class="headerlink" title="&#x57FA;&#x7840;&#x6982;&#x5FF5;"></a>&#x57FA;&#x7840;&#x6982;&#x5FF5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap的介绍"><span class="nav-number">2.</span> <span class="nav-text"><a href="#largeHeap&#x7684;&#x4ECB;&#x7ECD;" class="headerlink" title="largeHeap&#x7684;&#x4ECB;&#x7ECD;"></a>largeHeap&#x7684;&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap-有多大"><span class="nav-number">3.</span> <span class="nav-text"><a href="#largeHeap-&#x6709;&#x591A;&#x5927;" class="headerlink" title="largeHeap &#x6709;&#x591A;&#x5927;"></a>largeHeap &#x6709;&#x591A;&#x5927;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap需要权限吗"><span class="nav-number">4.</span> <span class="nav-text"><a href="#largeHeap&#x9700;&#x8981;&#x6743;&#x9650;&#x5417;" class="headerlink" title="largeHeap&#x9700;&#x8981;&#x6743;&#x9650;&#x5417;"></a>largeHeap&#x9700;&#x8981;&#x6743;&#x9650;&#x5417;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#largeHeap对GC的影响"><span class="nav-number">5.</span> <span class="nav-text"><a href="#largeHeap&#x5BF9;GC&#x7684;&#x5F71;&#x54CD;" class="headerlink" title="largeHeap&#x5BF9;GC&#x7684;&#x5F71;&#x54CD;"></a>largeHeap&#x5BF9;GC&#x7684;&#x5F71;&#x54CD;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#慎用largeHeap"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x614E;&#x7528;largeHeap" class="headerlink" title="&#x614E;&#x7528;largeHeap"></a>&#x614E;&#x7528;largeHeap</span></a></li></ol></div>
             
           </div>
         </section>

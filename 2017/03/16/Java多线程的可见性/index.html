@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="可见性的描述可见性：一个线程对共享的变量进行修改，能够及时的被其他线程看到。共享变量：如果一个变量在多个线程的工作内部中存在副本，那么这个变量就是这几个线程的共享变量。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java多线程的可见性">
 <meta property="og:url" content="http://yoursite.com/2017/03/16/Java多线程的可见性/index.html">
-<meta property="og:site_name" content="MARK'S BLOG">
+<meta property="og:site_name" content="MARK&#39;S BLOG">
 <meta property="og:description" content="可见性的描述可见性：一个线程对共享的变量进行修改，能够及时的被其他线程看到。共享变量：如果一个变量在多个线程的工作内部中存在副本，那么这个变量就是这几个线程的共享变量。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://om6a1m0ym.bkt.clouddn.com/17-3-23/38360259-file_1490235974257_8daf.jpg">
 <meta property="og:image" content="http://om6a1m0ym.bkt.clouddn.com/17-3-23/80029745-file_1490235974377_2e0f.jpg">
 <meta property="og:updated_time" content="2017-03-23T03:54:46.000Z">
@@ -584,7 +586,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性的描述"><span class="nav-number">1.</span> <span class="nav-text">可见性的描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模型（JMM）"><span class="nav-number">2.</span> <span class="nav-text">Java内存模型（JMM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性的实现"><span class="nav-number">3.</span> <span class="nav-text">可见性的实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性的描述"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x53EF;&#x89C1;&#x6027;&#x7684;&#x63CF;&#x8FF0;" class="headerlink" title="&#x53EF;&#x89C1;&#x6027;&#x7684;&#x63CF;&#x8FF0;"></a>&#x53EF;&#x89C1;&#x6027;&#x7684;&#x63CF;&#x8FF0;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java内存模型（JMM）"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Java&#x5185;&#x5B58;&#x6A21;&#x578B;&#xFF08;JMM&#xFF09;" class="headerlink" title="Java&#x5185;&#x5B58;&#x6A21;&#x578B;&#xFF08;JMM&#xFF09;"></a>Java&#x5185;&#x5B58;&#x6A21;&#x578B;&#xFF08;JMM&#xFF09;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可见性的实现"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x53EF;&#x89C1;&#x6027;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="&#x53EF;&#x89C1;&#x6027;&#x7684;&#x5B9E;&#x73B0;"></a>&#x53EF;&#x89C1;&#x6027;&#x7684;&#x5B9E;&#x73B0;</span></a></li></ol></div>
             
           </div>
         </section>
