@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="MARK&#39;S BLOG">
 <meta property="og:description" content="单例模式是Android项目中最常用的设计模式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-24T07:08:52.000Z">
+<meta property="og:updated_time" content="2018-05-31T08:23:02.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聊一聊单例模式">
 <meta name="twitter:description" content="单例模式是Android项目中最常用的设计模式。">
@@ -343,7 +343,10 @@
 <li><p>双重判断模式</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingleInstance</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingleInstance sInstance;</div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingleInstance</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingleInstance <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</div><div class="line">      <span class="keyword">synchronized</span>(SingleInstance.class)&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</div><div class="line">          sInstance = <span class="keyword">new</span> SingleInstance();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sInstance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>volatile关键字，volatile关键字是轻型的synchronized,</p>
+<li><p>volatile关键字，volatile关键字是轻型的synchronized</p>
+</li>
+<li><p>AtomicReference原子引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line"> 2     </div><div class="line"> 3     private static AtomicReference&lt;Singleton&gt; singleton = new AtomicReference&lt;Singleton&gt;();</div><div class="line"> 4     </div><div class="line"> 5     private Singleton()&#123;&#125;</div><div class="line"> 6     </div><div class="line"> 7     public static Singleton getInstance() &#123;</div><div class="line"> 8         </div><div class="line"> 9         for(;;) &#123;</div><div class="line">10             Singleton instance = singleton.get();</div><div class="line">11             if(instance != null ) &#123;</div><div class="line">12                 return instance;</div><div class="line">13             &#125;</div><div class="line">14             instance = new Singleton();</div><div class="line">15             if(singleton.compareAndSet(null, instance)) &#123;</div><div class="line">16                 return instance;</div><div class="line">17             &#125;</div><div class="line">18         &#125;</div><div class="line">19     &#125;</div><div class="line">20     </div><div class="line">21 &#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -476,7 +479,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -493,7 +496,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -566,7 +569,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

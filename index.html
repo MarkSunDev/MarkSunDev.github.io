@@ -260,6 +260,323 @@
             
               
                 
+                <a class="post-title-link" href="/2018/06/12/Git生成公钥/" itemprop="url">
+                  Git生成公钥
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-06-12T15:43:59+08:00" content="2018-06-12">
+              2018-06-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/06/12/Git生成公钥/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/12/Git生成公钥/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Git 生成公钥命令：<br><code>ssh-keygen -t rsa -C &quot;sunxiaoyang@cmcm.com&quot;</code></p>
+<ul>
+<li>第一步确定位置，默认在<code>~/.ssh/</code></li>
+<li>第二步输入密码<strong>（如果不希望Git在操作时输入密码的话，这里可以不输入）</strong></li>
+</ul>
+<p>查看公钥，上传到Git服务器<br><code>cat ~/.ssh/id_rsa.pub</code></p>
+<p>Android studio 使用SSH时要确定<br><img src="http://om6a1m0ym.bkt.clouddn.com/15287896952054.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/22/Bitmap详解之ExifInterface/" itemprop="url">
+                  Bitmap详解之ExifInterface
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-22T17:27:31+08:00" content="2018-01-22">
+              2018-01-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/01/22/Bitmap详解之ExifInterface/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/22/Bitmap详解之ExifInterface/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Exif-ExifInterface简介<br>Exif是一种图像文件格式，它的数据存储与JPEG格式是完全相同的。实际上Exif格式就是在JPEG格式头部插入了数码照片的信息，包括拍摄时的光圈、快门、白平衡、ISO、焦距、日期时间等各种和拍摄条件以及相机品牌、型号、色彩编码、拍摄时录制的声音以及GPS全球定位系统数据、缩略图等。你可以利用任何可以查看JPEG文件的看图软件浏览Exif格式的照片，但并不是所有的图形程序都能处理Exif信息</p>
+</li>
+<li><p>ExifInterface中的功能简单进行介绍<br>Android开发中，在对图片进行展示、编辑、发送等操作时经常会涉及Exif的操作，Android中操作Exif主要是通过ExifInterface，ExifInterface看上去是一个接口，其实是一个类，位于Android.media.ExifInterface的位置。进入ExifInterface类，发现方法很少，主要就是三个方面：读取、写入、缩略图。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ExifInterface exif = <span class="keyword">new</span> ExifInterface(path);</div><div class="line"><span class="keyword">int</span> rotation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);</div></pre></td></tr></table></figure>
+<p>获取转动角度</p>
+<p>下面是获得转动角度的通用方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">exifToDegrees</span><span class="params">(<span class="keyword">int</span> exifOrientation)</span> </span>&#123;</div><div class="line">       <span class="keyword">if</span> (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) &#123;</div><div class="line">           <span class="keyword">return</span> <span class="number">90</span>;</div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) &#123;</div><div class="line">           <span class="keyword">return</span> <span class="number">180</span>;</div><div class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) &#123;</div><div class="line">           <span class="keyword">return</span> <span class="number">270</span>;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/22/Bitmap详解/" itemprop="url">
+                  Bitmap详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-22T17:26:15+08:00" content="2018-01-22">
+              2018-01-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/01/22/Bitmap详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/01/22/Bitmap详解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/12/12/安装app失败的问题/" itemprop="url">
                   关于as安装app失败的问题
                 </a>
@@ -466,417 +783,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/10/try代码块中含return语句时代码执行顺序/" itemprop="url">
-                  try代码块中含return语句时代码执行顺序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-10T17:07:38+08:00" content="2017-05-10">
-              2017-05-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/10/try代码块中含return语句时代码执行顺序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/10/try代码块中含return语句时代码执行顺序/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>举了例子先</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;        </div><div class="line">        <span class="keyword">int</span> result = test();</div><div class="line">        System.out.println(result);</div><div class="line">&#125;    </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span> </span>&#123;        </div><div class="line">   <span class="keyword">int</span> t = <span class="number">0</span>;        </div><div class="line">   <span class="keyword">try</span> &#123;            </div><div class="line">       <span class="keyword">return</span> t;</div><div class="line">   &#125; <span class="keyword">finally</span> &#123;</div><div class="line">       ++t;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Java面试的时候经常会问到上面这个问题，result的打印结果是多少？答案是0。<br>我们都知道，在上述例子中，执行顺序是先finally再return。但是这个的答案居然是0。原因就是return的时候不会直接返回t值。值引用的时候引用的是</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/03/APK都有哪些东西/" itemprop="url">
-                  APK都有哪些东西
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-03T14:48:38+08:00" content="2017-05-03">
-              2017-05-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/03/APK都有哪些东西/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/03/APK都有哪些东西/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>APK其实就是一个后缀名为.apk的压缩文件，解压缩出来以后如下</p>
-<table>
-<thead>
-<tr>
-<th>APK</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>assert目录</td>
-<td>存放需要打包到APK中的静态文件</td>
-</tr>
-<tr>
-<td>lib目录</td>
-<td>程序以来的nativie库</td>
-</tr>
-<tr>
-<td>res目录</td>
-<td>存放应用程序的资源</td>
-</tr>
-<tr>
-<td>META-INF目录</td>
-<td>存放应用程序签名和证书的目录</td>
-</tr>
-<tr>
-<td>AndroidManifest.xml</td>
-<td>应用程序的配置文件</td>
-</tr>
-<tr>
-<td>classes.dex</td>
-<td>dex可执行文件</td>
-</tr>
-<tr>
-<td>resource.arsc</td>
-<td>资源配置文件</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/02/png和jpg的区别/" itemprop="url">
-                  png和jpg的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-05-02T16:51:30+08:00" content="2017-05-02">
-              2017-05-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/面试/" itemprop="url" rel="index">
-                    <span itemprop="name">面试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/05/02/png和jpg的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/02/png和jpg的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>猎豹二面的时候问到关于PNG和JPG的区别，下面详细介绍一下他们的优点和缺点。</p>
-<p>JPG的优点</p>
-<ol>
-<li>JPG使用失真压缩方法，图片所占内存小</li>
-<li>JPG不支持透明度设定</li>
-<li>JPG质量低，且有锯齿</li>
-</ol>
-<p>PNG的优点</p>
-<ol>
-<li>PNG使用无损压缩方法，图片所占内存大</li>
-<li>PNG有8位、24位和32位三种类型，8位的png支持2的8次方（256）种颜色，8位的png其实支持不透明，索引透明和alpha透明。24位的png支持2的24次方种颜色，表现为不透明。32位的png其实在24的png上增加8位的透明信息，支持不同程度的半透效果。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -922,7 +828,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -939,7 +845,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1001,7 +907,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

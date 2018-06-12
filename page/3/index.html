@@ -260,6 +260,411 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/30/在Mac上下载与编译Aosp Android源码/" itemprop="url">
+                  在Mac上下载与编译Aosp Android源码
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-30T18:46:53+08:00" content="2017-03-30">
+              2017-03-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/30/在Mac上下载与编译Aosp Android源码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/在Mac上下载与编译Aosp Android源码/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这里采用的是清华的镜像，国内可以直接访问，速度很快。如果想用Android官方镜像可以在下面找到地址。<br><a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="noopener">https://android.googlesource.com/platform/manifest</a><br>Android官方给的下载编译源码的文章：<br><a href="http://source.android.com/source/initializing.html" target="_blank" rel="noopener">http://source.android.com/source/initializing.html</a><br>其实很多文章都参考了上面官方的文章，本文也不例外，只是把自己遇到的问题和坑记录一下，防止以后在掉进去。</p>
+<h2 id="配置Mac环境"><a href="#配置Mac环境" class="headerlink" title="配置Mac环境"></a>配置Mac环境</h2><p><strong>第一步 在Mac上创建一个大小写敏感的分区</strong><br>Mac上默认是不区分文件名大小写的，但是Android源码的目录中是区分大小写的，所以需要创建一块分区来存放解压后的源码文件，分区也就是通常意义上的镜像等意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil create -type SPARSE -fs &apos;Case-sensitive Journaled HFS+&apos; -size 80g ~/android.dmg</div></pre></td></tr></table></figure>
+<p>这里创建的大小为80G的硬盘，如果你的硬盘够大，最好创建的大一些，比如100G。因为我在编译源码的时候发现80G有时还不够用。<br>对于这个大小下面可以用语句来更改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil resize -size 100g ~/android.dmg.sparseimage</div></pre></td></tr></table></figure>
+<p>这里是100G。</p>
+<p><strong>第二步 加载这块分区</strong><br>直接上语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo hdiutil attach ~/android.dmg.sparseimage -mountpoint /Volumes/android</div></pre></td></tr></table></figure>
+<p><strong>第三步 下载安装辅助工具</strong></p>
+<ul>
+<li>安装Xcode</li>
+<li>安装MacPorts，找和自己系统一致的版本<br><a href="https://distfiles.macports.org/MacPorts/" target="_blank" rel="noopener">https://distfiles.macports.org/MacPorts/</a></li>
+<li>通过MacPorts按装make：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=1 sudo port install gmake libsdl git gnupg</div></pre></td></tr></table></figure>
+<p><strong>第四步 打开文件描述限制</strong><br>mac系统默认只能打开1024个文件，而编译源码的时候可能会超过这个限制，所以需要在个人配置文件.bash_profile中做出设置。添加一下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#set the number of open files to be 1024</div><div class="line">ulimit -S -n 1024</div></pre></td></tr></table></figure>
+<p>至于~/.bash_profile你可以这样打开：</p>
+<ol>
+<li>启动终端Terminal</li>
+<li>进入当前用户的home目录<br>输入cd~</li>
+<li>创建.bash_profile<br>输入touch .bash_profile</li>
+<li>编辑.bash_profile文件<br>输入open -e .bash_profile</li>
+<li>添加上面内容，保存文件，关闭.bash_profile<br>source ~/.bash_profile</li>
+</ol>
+<p><strong>第五步 安装Repo</strong><br>Repo是一个辅助于Git管理Android版本及分支的工具。下载好的repo会在bin目录下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ mkdir ~/bin</div><div class="line">$ PATH=~/bin:$PATH</div><div class="line">$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</div><div class="line">$ chmod a+x ~/bin/repo</div></pre></td></tr></table></figure>
+<p>第四行的意思是给予/bin/repo读写权限</p>
+<p><strong>第六步 下载源码</strong><br>清华大学TUNA镜像源<br><a href="https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar</a><br>随便下载到哪里都可以，下载完成后在本目录执行以下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ tar xf aosp-latest.tar</div><div class="line">$ cd AOSP   # 解压得到的 AOSP 工程目录</div><div class="line">$ repo sync # 正常同步一遍即可得到完整目录, 这一步时间很长，耐心等待。</div></pre></td></tr></table></figure>
+<p>如果出现问题卡主了，就重新执行repo snyc，如果想停止可以Ctrl+C。Repo 是断点续传的，但如果断了还是需要多下载一些重复下载的东西。<br>如果是执行repo错了的话，就重新执行第五步</p>
+<p><strong>第七步 进入分区</strong><br>先把上面解压和同步完的源码拷贝到你的分区中，注意要把整个aosp文件夹都拷过去，只要拷贝到分区根目录就行。<br>接着我们进入这个aosp目录中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cd /Volumes/android/AOSP/</div></pre></td></tr></table></figure>
+<p>如果出现找不到文件夹的错误信息，注意看是否挂载了分区</p>
+<p><strong>第八步 编译</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ source build/envsetup.sh</div><div class="line">$ lunch aosp_arm-eng</div><div class="line">$ sudo make -j4</div></pre></td></tr></table></figure>
+<p>j4是执行4个核心编译的意思。<br>不用管编译的过程出现多少警告，只有出现错误的时候才需要解决。解决错误以后重新执行<code>sudo make -j4</code>就行了。<br>编译成功后继续在源码根目录执行以下语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mmm development/tools/idegen/</div><div class="line">$ sh ./development/tools/idegen/idegen.sh</div></pre></td></tr></table></figure>
+<p>完成后就会在aosp根目录生成android.ipr文件，在就Android stuido中打开这个ipr文件就算是打开源码了。等indexing执行完成后就可以正常阅读了。</p>
+<p><strong>遇到的编译错误</strong><br><img src="http://om6a1m0ym.bkt.clouddn.com/14908699378845.jpg" alt=""><br>没有配置ANDROID_JAVA_HOME环境变量，在bash_profile中配置成和JAVA_HOME一样即可。<br>我在配置后编译还是会出现同样的错误，最后在找了一天没有结果的时候重启电脑就好了。</p>
+<p><code>fatal error: linux/netfilter/xt_DSCP.h: No such file or directory</code><br>这个错误的解决办法是创建一个名为xt_DSCP.h（注意大写）的文件，放在aosp文件中的external/iptables/extensions/../include/linux/netfilter下，xt_DSCP.h内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* based on ipt_FTOS.c (C) 2000 by Matthew G. Marsh &lt;mgm@paktronix.com&gt;</div><div class="line">* This software is distributed under GNU GPL v2, 1991</div><div class="line">*</div><div class="line">* See RFC2474 for a description of the DSCP field within the IP Header.</div><div class="line">*</div><div class="line">* xt_DSCP.h,v 1.7 2002/03/14 12:03:13 laforge Exp</div><div class="line">*/</div><div class="line">#ifndef _XT_DSCP_TARGET_H</div><div class="line">#define _XT_DSCP_TARGET_H</div><div class="line">#include &lt;linux/netfilter/xt_dscp.h&gt;</div><div class="line">#include &lt;linux/types.h&gt;</div><div class="line"></div><div class="line">/* target info */</div><div class="line">struct xt_DSCP_info &#123;</div><div class="line">    __u8 dscp;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct xt_tos_target_info &#123;</div><div class="line">    __u8 tos_value;</div><div class="line">    __u8 tos_mask;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">#endif /* _XT_DSCP_TARGET_H */</div></pre></td></tr></table></figure>
+<p>bash_profile文件如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">export PATH=$&#123;PATH&#125;:/Users/xjw/Library/Android/sdk/platform-tools</div><div class="line">export PATH=$&#123;PATH&#125;:/Users/xjw/Library/Android/sdk/tools</div><div class="line"></div><div class="line">#配置JDK环境</div><div class="line">JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home</div><div class="line">export PATH=$JAVA_HOME/bin:$PATH </div><div class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</div><div class="line"></div><div class="line"></div><div class="line">export ANDROID_JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/</div><div class="line"></div><div class="line">#源码编译时，需要设置系统的最大值 &lt;br/&gt;</div><div class="line">ulimit -S -n 1024</div><div class="line"></div><div class="line"></div><div class="line"># MacPorts Installer addition on 2017-03-27_at_10:42:35: adding an appropriate PATH variable for use with MacPorts.</div><div class="line">export PATH=&quot;/opt/local/bin:/opt/local/sbin:$PATH&quot;</div><div class="line"># Finished adapting your PATH environment variable for use with MacPorts.</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/23/ListView源码解析/" itemprop="url">
+                  ListView源码解析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T23:23:30+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/ListView源码解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/ListView源码解析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>ListView -&gt; AbsListView -&gt; RecycleBin<br>RecycleBin -&gt; fillActiveViews</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/23/ListView源码解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/23/二叉树/" itemprop="url">
+                  二叉树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-23T15:42:17+08:00" content="2017-03-23">
+              2017-03-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/23/二叉树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/二叉树/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Node root;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Tree</span><span class="params">()</span> </span>&#123;</div><div class="line">		root = <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">find</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">		Node current = root;</div><div class="line">		<span class="keyword">while</span>(current.iData != key) &#123;</div><div class="line">			<span class="keyword">if</span>(key &lt; current.iData) &#123;<span class="comment">//判断是否小于当前节点的值，如果小查询左树，如果大查询右树</span></div><div class="line">				current = current.leftChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				current = current.rightChild;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="keyword">if</span>(current == <span class="keyword">null</span>) &#123;<span class="comment">//如果当前节点是null代表没有查到</span></div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> current;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 1、首先获得新插入的newNode</div><div class="line">	 * 2、 如果父节点Root==null，newNode就是父节点</div><div class="line">	 * 3、 如果已经有了父节点，先取出父节点parent</div><div class="line">	 * 4、判断父节点的值和id的大小，如果id大current移动到父节点的右节点，判断右节点有没有值，如果右节点没有值</div><div class="line">	 * <span class="doctag">@param</span> id</div><div class="line">	 * <span class="doctag">@param</span> dd</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">double</span> dd)</span> </span>&#123;</div><div class="line">		Node newNode = <span class="keyword">new</span> Node(id, dd);</div><div class="line">		<span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</div><div class="line">			root = newNode;</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			Node current = root;</div><div class="line">			Node parent;</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">				parent = current;<span class="comment">//父节点</span></div><div class="line">				<span class="keyword">if</span>(id &lt; current.iData) &#123;</div><div class="line">					current = current.leftChild;</div><div class="line">					<span class="keyword">if</span>(current == <span class="keyword">null</span>) &#123;</div><div class="line">						parent.leftChild = newNode;</div><div class="line">						<span class="keyword">return</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;<span class="keyword">else</span> &#123;</div><div class="line">					current = current.rightChild;</div><div class="line">					<span class="keyword">if</span>(current == <span class="keyword">null</span>) &#123;</div><div class="line">						parent.rightChild = newNode;</div><div class="line">						<span class="keyword">return</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 前序排列</div><div class="line">	 * <span class="doctag">@param</span> localRoot</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(Node localRoot)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(localRoot != <span class="keyword">null</span>) &#123;</div><div class="line">			System.out.println(localRoot.iData + <span class="string">""</span>);</div><div class="line">			preOrder(localRoot.leftChild);</div><div class="line">			preOrder(localRoot.rightChild);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 中序排列</div><div class="line">	 * <span class="doctag">@param</span> localRoot</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inOrder</span><span class="params">(Node localRoot)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(localRoot != <span class="keyword">null</span>) &#123;</div><div class="line">			inOrder(localRoot.leftChild);</div><div class="line">			System.out.println(localRoot.iData + <span class="string">""</span>);</div><div class="line">			inOrder(localRoot.rightChild);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 后序排列</div><div class="line">	 * <span class="doctag">@param</span> localRoot</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postOrder</span><span class="params">(Node localRoot)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span>(localRoot != <span class="keyword">null</span>)&#123;</div><div class="line">		postOrder(localRoot.leftChild);</div><div class="line">		postOrder(localRoot.rightChild);</div><div class="line">		System.out.println(localRoot.iData + <span class="string">""</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 获得最新节点</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> Node <span class="title">minimun</span><span class="params">()</span> </span>&#123;</div><div class="line">		Node current, last = <span class="keyword">null</span>;</div><div class="line">		current = root;</div><div class="line">		<span class="keyword">while</span>(current != <span class="keyword">null</span>) &#123;</div><div class="line">			last = current;</div><div class="line">			current = current.leftChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> last;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 删除节点</div><div class="line">	 * <span class="doctag">@param</span> key</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</div><div class="line">		Node current = root;</div><div class="line">		Node parent = root;</div><div class="line">		<span class="keyword">boolean</span> isLeftChild = <span class="keyword">true</span>;</div><div class="line">		<span class="keyword">while</span>(current.iData != key) &#123;</div><div class="line">			parent = current;</div><div class="line">			<span class="keyword">if</span>(key &lt; current.iData) &#123;</div><div class="line">				isLeftChild = <span class="keyword">true</span>;</div><div class="line">				current = current.leftChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				isLeftChild = <span class="keyword">false</span>;</div><div class="line">				current = current.rightChild;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (current == <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(current.leftChild == <span class="keyword">null</span> &amp;&amp; </div><div class="line">				current.rightChild == <span class="keyword">null</span>) &#123;<span class="comment">//没有子节点</span></div><div class="line">			<span class="keyword">if</span>(current == root) &#123;<span class="comment">//如果自己是根节点而且没有左右节点，意思就是删除整个树了，变成空数</span></div><div class="line">				root = <span class="keyword">null</span>;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(isLeftChild) &#123;<span class="comment">//如果不是根节点，同时没有子节点，而是一个父节点的左节点，直接设置为null代表删除</span></div><div class="line">				parent.leftChild = <span class="keyword">null</span>;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				parent.rightChild = <span class="keyword">null</span>;<span class="comment">//同上，右节点设置为null代表删除</span></div><div class="line">			&#125;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(current.rightChild == <span class="keyword">null</span>) &#123;<span class="comment">//如果当前节点的右节点是null，代表要删除的节点只有一个左节点</span></div><div class="line">			<span class="keyword">if</span>(current == root) &#123;<span class="comment">//是根节点，且有左节点</span></div><div class="line">				root = current.leftChild;<span class="comment">//把左节点设置成根节点</span></div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(isLeftChild) &#123;<span class="comment">//当前节点是父节点的左节点，把父节点的左节点设置成当前节点的左节点</span></div><div class="line">				parent.leftChild = current.leftChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;<span class="comment">//同上</span></div><div class="line">				parent.rightChild = current.leftChild;</div><div class="line">			&#125;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(current.leftChild == <span class="keyword">null</span>) &#123;<span class="comment">//同上，左节点为空，当前节点是父节点的右节点</span></div><div class="line">			<span class="keyword">if</span>(current == root) &#123;</div><div class="line">				root = current.rightChild;</div><div class="line">			&#125;<span class="keyword">else</span>  <span class="keyword">if</span>(isLeftChild) &#123;</div><div class="line">				parent.leftChild = current.rightChild;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				parent.rightChild = current.rightChild;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			Node successor = getSuccessor(current);</div><div class="line">			<span class="keyword">if</span>(current == root) &#123;</div><div class="line">				root = successor;</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(isLeftChild) &#123;</div><div class="line">				parent.leftChild = successor;</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				parent.rightChild = successor;</div><div class="line">			&#125;</div><div class="line">			successor.leftChild = current.leftChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">private</span> Node <span class="title">getSuccessor</span><span class="params">(Node delNode)</span> </span>&#123;</div><div class="line">		Node successorParent = delNode;</div><div class="line">		Node successor = delNode;</div><div class="line">		Node current = delNode.rightChild;</div><div class="line">		<span class="keyword">while</span>(current != <span class="keyword">null</span>) &#123;</div><div class="line">			successorParent = successor;</div><div class="line">			successor = current;</div><div class="line">			current = current.leftChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(successor != delNode.rightChild) &#123;</div><div class="line">			successorParent.leftChild = successor.rightChild;</div><div class="line">			successor.rightChild = delNode.rightChild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> successor;</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/23/用数组实现栈/" itemprop="url">
                   用数组实现栈
                 </a>
@@ -479,400 +884,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/16/Java多线程的可见性/" itemprop="url">
-                  Java多线程的可见性
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-16T11:03:20+08:00" content="2017-03-16">
-              2017-03-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java线程/" itemprop="url" rel="index">
-                    <span itemprop="name">Java线程</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/16/Java多线程的可见性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/Java多线程的可见性/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="可见性的描述"><a href="#可见性的描述" class="headerlink" title="可见性的描述"></a>可见性的描述</h3><p>可见性：一个线程对共享的变量进行修改，能够及时的被其他线程看到。<br>共享变量：如果一个变量在多个线程的工作内部中存在副本，那么这个变量就是这几个线程的共享变量。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/16/Java多线程的可见性/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/14/Java中Lock、synchronized和信号量详解/" itemprop="url">
-                  Java中Lock、synchronized和信号量详解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-14T17:01:31+08:00" content="2017-03-14">
-              2017-03-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/14/Java中Lock、synchronized和信号量详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/Java中Lock、synchronized和信号量详解/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/进程和线程的区别/" itemprop="url">
-                  进程和线程的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-07T14:55:25+08:00" content="2017-03-07">
-              2017-03-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2017/03/07/进程和线程的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/进程和线程的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>来自阮一峰的博客</strong></p>
-<ol>
-<li><p>计算机的核心是CPU，它承担了所有的计算任务。它就像是一个工厂，时刻在运行。</p>
-</li>
-<li><p>假设工程的电力有限，一次只能供给一个车间使用。也就是说，一个车间开工时，其他车间必须停滞，这个意思就是单个CPU一次只能运行一个任务。</p>
-</li>
-<li><p>进程就好比工厂的车间，它代表CPU所能处理的单个任务。任一时刻，CPU总是运行一个进程。</p>
-</li>
-<li><p>一个车间里，可以有很多工人。他们协同完成一个任务。</p>
-</li>
-<li><p>线程就好比车间里的工人。一个进程可以包括多个线程。</p>
-</li>
-<li><p>车间的空间是工人们共享的，比如许多房间是每个工人都可以进入的。象征着一个进程的内存空间是共享的，每个线程都可以共享这片内存。</p>
-</li>
-<li><p>可是车间的空间是有限的，有些房间最多只能容纳一个人，比如洗手间。当里边有人的时候，其他人不能进入只能在门口等候，这代表一个线程使用某些共享内存的时候，其他线程必须等他结束才能使用这块内存。</p>
-</li>
-<li><p>一个用来防止他人进入的简单的办法，就是给门口加一把锁。先到的人锁住房间，后边的人看见房间上锁，就会在门口等候。这也就是所谓的“互斥锁”（Mutex），防止多个线程同事读取某一块内存。</p>
-</li>
-<li><p>还有些房间可以容纳许多人，比如厨房一次只能容纳N个人，多余N个人的时候，其他人必须在门口等候。这就好比某些内存区域只能供给固定数目的线程使用。</p>
-</li>
-<li><p>这个时候为了解决问题，就需要给门口挂上N把钥匙。进去的人带上一把，出来的时候把钥匙挂在门口。后来的人发现钥匙空了就知道要等待。这种做法叫做“信号量”（Semaphore）,用来保证多个线程不会互相冲突。不难看出，mutex是semaphore的一种特殊情况（n=1）。信号量完全可以代替互斥锁。但是，因为mutex较为简单，且效率高，所以在必须保证资源独占的情况下，还是采用这种设计。</p>
-</li>
-</ol>
-<p><strong>自己的理解</strong></p>
-<p>一、关于进程和线程，首先从定义上理解就有所不同  </p>
-<ol>
-<li><p>进程是什么？<br>是具有一定独立功能的程序、它是系统进行资源分配和调度的一个独立单位，重点在系统调度和单独的单位，也就是说进程是可以独立运行的一段程序。    </p>
-</li>
-<li><p>线程又是什么？<br>线程进程的一个实体，是CPU调度和分派的基本单位，他是比进程更小的能独立运行的基本单位，线程自己基本上不拥有系统资源。<br>在运行时，只是暂用一些计数器、寄存器和栈 。</p>
-</li>
-</ol>
-<p>二、他们之间的关系</p>
-<ol>
-<li><p>一个线程只能属于一个进程，而一个进程可以有多个线程，但至少有一个线程（通常说的主线程）。 </p>
-</li>
-<li><p>资源分配给进程，同一进程的所有线程共享该进程的所有资源。  </p>
-</li>
-<li><p>线程在执行过程中，需要协作同步。不同进程的线程间要利用消息通信的办法实现同步。</p>
-</li>
-<li><p>处理机分给线程，即真正在处理机上运行的是线程。    </p>
-</li>
-<li><p>线程是指进程内的一个执行单元，也是进程内的可调度实体。  </p>
-</li>
-</ol>
-<p>三、从三个角度来剖析二者之间的区别</p>
-<ol>
-<li><p>调度：线程作为调度和分配的基本单位，进程作为拥有资源的基本单位。</p>
-</li>
-<li><p>并发性：不仅进程之间可以并发执行，同一个进程的多个线程之间也可以并发执行。</p>
-</li>
-<li><p>拥有资源：进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -918,7 +929,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -935,7 +946,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -997,7 +1008,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
